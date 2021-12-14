@@ -5,6 +5,7 @@
           .navbar {
             background-image:  linear-gradient(to bottom right, #deaaff,  #ffcbf2ff, #c8e7ff);
             color: black;
+            padding: 10px 20px;
             background-color: #ffcbf2ff;
             margin-bottom: 0;
             border-radius: 0;
@@ -12,6 +13,7 @@
 
           .nav.navbar-nav.navbar-right li a {
             color: black;
+            font-size: 20px;
           }
 
           .nav.navbar-nav.navbar-right li a:hover, .nav.navbar-nav.navbar-right li a:focus {
@@ -21,6 +23,7 @@
 
           .nav.navbar-nav li a{
             color: black;
+            font-size: 20px;
             background-color:transparent;
           }
 
