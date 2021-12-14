@@ -38,8 +38,6 @@
           }
 
 
-
-
           /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
           .row.content {height: 450px}
           
@@ -73,6 +71,11 @@
             list-style: none;
           }
 
+          /*footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+          }*/
           /* On small screens, set height to 'auto' for sidenav and grid */
           @media screen and (max-width: 767px) {
             .sidenav {
