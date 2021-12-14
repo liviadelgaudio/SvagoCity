@@ -4,6 +4,10 @@ $(document).ready(function(){
             $(".active").removeClass("active");
         $(this).addClass("active");
         }
-        
+
+    $(".submenu").hide();
+    $(".acquisto").click(function(){
+        $(".submenu").show();
+    })    
     });
 });
