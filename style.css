@@ -1,10 +1,43 @@
 /* Remove the navbar's default margin-bottom and rounded borders */ 
+          * {
+            color:black;
+          }
           .navbar {
-            background-color: #ffcbf2ff;
+            background-image:  linear-gradient(to bottom right, #deaaff,  #ffcbf2ff, #c8e7ff);
             color: black;
             margin-bottom: 0;
             border-radius: 0;
           }
+
+          .nav.navbar-nav.navbar-right li a {
+            color: black;
+          }
+
+          .nav.navbar-nav.navbar-right li a:hover, .nav.navbar-nav.navbar-right li a:focus {
+            color: purple;
+          }
+          
+
+          .nav.navbar-nav li a{
+            color: black;
+            background-color:transparent;
+          }
+
+          .nav.navbar-nav > li.active > a {
+            color: black;
+            background-color:#c8e7ff;
+          }
+          .nav.navbar-nav > li.active > a:hover, .nav.navbar-nav > li.active > a:focus{
+            background-color: #c8e7ff;
+            color: purple;
+          }
+
+          .nav.navbar-nav li a:hover, .nav.navbar-nav li a:focus{
+            color: purple;
+          }
+
+
+
 
           /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
           .row.content {height: 450px}
@@ -18,15 +51,47 @@
           
           /* Set black background color, white text and some padding */
           footer {
-            background-color: #ffcbf2ff;
+            background-image: linear-gradient( to bottom right, #deaaff,  #ffcbf2ff, #c8e7ff);
             color: black;
             padding: 15px;
+            font-size: 80%;
+            overflow:none;
           }
+
+          footer > div > div:first-child {
+            font-size: 20px;
+            text-emphasis-style: bold;
+          }
+
+          footer div div ul {
+            list-style: none;
+          }
+
           /* On small screens, set height to 'auto' for sidenav and grid */
           @media screen and (max-width: 767px) {
             .sidenav {
               height: auto;
               padding: 15px;
             }
-            .row.content {height:auto;} 
+            
+            .navbar-toggle{
+              background-color: #deaaff;
+              color:black !important;
+              
+            }
+
+            .navbar-toggle:hover, .navbar-toggle:focus{
+              background-color: #c8e7ff !important;
+              color:black !important;
+            }
+
+            .navbar-toggle:hover .icon-bar, .navbar-toggle .icon-bar, .navbar-toggle:focus .icon-bar {
+              background: black !important;
+            }
+
+            .row.content {
+              height:auto;
+            } 
           }
+          
+         
