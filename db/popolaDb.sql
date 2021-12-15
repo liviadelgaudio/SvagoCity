@@ -38,27 +38,27 @@ INSERT INTO `recensione` (`idRecensione`, `codiceCliente`, `testoRecensione`, `v
 
 --prodotti
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('1', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Bianco', 'XS', ‘5’);
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('1', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Bianco', 'XS', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES (‘2’, 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Bianco', 'S', ‘5’);
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('2', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Bianco', 'S', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES (‘3’, 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Bianco', ‘M’, ‘5’);
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('3', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Bianco', 'M', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES (‘4’, 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Bianco', ‘L’, ‘5’);
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('4', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Bianco', 'L', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES (‘5’, 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', ‘Rosa’, ‘XS’, ‘5’);
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('5', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Rosa', 'XS', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES (‘6’, 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', ‘Rosa’, ‘S’, ‘5’);
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('6', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Rosa', 'S', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES (‘7’, 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', ‘Rosa’, ‘M’, ‘5’);
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('7', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Rosa', 'M', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES (‘8’, 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', ‘Rosa’, ‘L’, ‘5’);
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('8', 'T-shirt logo donna', 'da inserire', 'Maglietta da donna in 100% cotone con logo del parco.', '11.99', 'Rosa', 'L', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES (‘9’, 'T-shirt logo uomo', 'da inserire', 'Maglietta da uomo in 100% cotone con logo del parco.', '11.99', 'Nero', ’S’, '5');
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('9', 'T-shirt logo uomo', 'da inserire', 'Maglietta da uomo in 100% cotone con logo del parco.', '11.99', 'Nero', 'S', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('10’, 'T-shirt logo uomo', 'da inserire', 'Maglietta da uomo in 100% cotone con logo del parco.', '11.99', 'Nero', ‘M’, '5');
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('10', 'T-shirt logo uomo', 'da inserire', 'Maglietta da uomo in 100% cotone con logo del parco.', '11.99', 'Nero', 'M', '5');
 
-INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('11’, 'T-shirt logo uomo', 'da inserire', 'Maglietta da uomo in 100% cotone con logo del parco.', '11.99', 'Nero', 'L', '5');
+INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('11', 'T-shirt logo uomo', 'da inserire', 'Maglietta da uomo in 100% cotone con logo del parco.', '11.99', 'Nero', 'L', '5');
 
 INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('12', 'T-shirt logo uomo', 'da inserire', 'Maglietta da uomo in 100% cotone con logo del parco.', '11.99', 'Nero', 'XL', '5');
 
