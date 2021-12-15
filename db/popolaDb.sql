@@ -11,6 +11,8 @@ INSERT INTO `cliente` (`idCliente`, `nomeCliente`, `cognomeCliente`, `emailClien
 INSERT INTO `biglietto` (`idBiglietto`, `tipologiaBiglietto`, `prezzoBiglietto`) VALUES ('1', 'Intero', '30');
 INSERT INTO `biglietto` (`idBiglietto`, `tipologiaBiglietto`, `prezzoBiglietto`) VALUES ('2', 'Ridotto', '20');
 INSERT INTO `biglietto` (`idBiglietto`, `tipologiaBiglietto`, `prezzoBiglietto`) VALUES ('3', 'Serale', '15');
+INSERT INTO `biglietto` (`idBiglietto`, `tipologiaBiglietto`, `prezzoBiglietto`) VALUES ('4', 'Abbonamento mensile', '50');
+INSERT INTO `biglietto` (`idBiglietto`, `tipologiaBiglietto`, `prezzoBiglietto`) VALUES ('5', 'Abbonamento annuale', '100');
 
 
 -- eventi
@@ -92,6 +94,15 @@ INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizion
 INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('26', 'Borraccia', 'da inserire', 'Borraccia termica con mascotte del parco.', '20', 'Azzurro', 'TU', '22');
 
 INSERT INTO `prodotto` (`idProdotto`, `nomeProdotto`, `imgProdotto`, `descrizioneProdotto`, `prezzoProdotoo`, `coloreProdotto`, `tagliaProdotto`, `disponibilitaProdotto`) VALUES ('27', 'Borraccia', 'da inserire', 'Borraccia termica con mascotte del parco.', '20', 'Rosa', 'TU', '30');
+
+
+--promozioni
+INSERT INTO `promozione` (`idPromozione`, `nomePromozione`, `descrizionePromozione`, `sconto`, `codicePromo`) VALUES ('1', 'Black Friday: 30% di sconto su tutti i prodotti del nostro e-shop', 'Per ottenerlo, al momento dell’acquisto inserisci il codice BLK30 nel campo apposito. Tale sconto si applica una sola volta per ciascun cliente registrato.', '30', 'BLK30');
+
+INSERT INTO `promozione` (`idPromozione`, `nomePromozione`, `descrizionePromozione`, `sconto`, `codicePromo`) VALUES ('2', 'SvagoCity Christmas edition', 'Vieni a trovarci durante le feste natalizie! Per te subito in omaggio un biglietto per un ingresso giornaliero da utilizzare entro un mese. Ti aspettiamo!', '100', 'CHRFREE');
+
+INSERT INTO `promozione` (`idPromozione`, `nomePromozione`, `descrizionePromozione`, `sconto`, `codicePromo`) VALUES ('3', 'Sconti gruppi', 'Vieni trovarci con un gruppo di più di 10 amici? Per voi subito uno sconto di almeno il 10% sull’acquisto dei biglietti: acquistate i biglietti con un unico ordine inserendo nel campo apposito il codice promo FRIENDS10. Più siete, maggiore sarà lo sconto applicato: vi aspettiamo!', '10', 'FRIENDS10');
+
 
 
 
