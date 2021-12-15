@@ -53,9 +53,6 @@ CREATE TABLE `cliente` (
 -- Dump dei dati per la tabella `cliente`
 --
 
-INSERT INTO `cliente` (`idCliente`, `nomeCliente`, `cognomeCliente`, `emailCliente`, `passwordCliente`, `dataNascitaCliente`, `indirizzoCliente`) VALUES
-(1, 'Silvia', 'Mirri', 'silvia.mirri@gmail.com', 'sissi2020', '1992-02-29', 'via Cesare Pavese, 50 Cesena FC');
-
 -- --------------------------------------------------------
 
 --
