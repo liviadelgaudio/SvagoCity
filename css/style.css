@@ -39,7 +39,40 @@
           .nav.navbar-nav li a:hover, .nav.navbar-nav li a:focus{
             color: purple;
           }
+          
+          .container{
+            position: absolute;
+            background-color: white;
+            left: 35%;
+            top: 20%;
+            width: 30%;
+            height: 40%;
+            border: 3px solid;
+            border-color: #deaaff;
+            opacity: 1;
+            z-index: 1;
+          }
 
+          .box-container{
+            z-index: 0;
+          }
+          .attiva{
+            opacity: 0.3;
+          }
+          .op{
+            opacity: 1;
+          }
+          .disattiva{
+            opacity:1;
+          }
+
+
+          .btn.glyphicon.glyphicon-remove{
+            display : block;
+            float : right;
+            top : 15px;
+            
+          }
 
           /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
           .row.content {height: 450px}
@@ -127,7 +160,15 @@
               height: auto;
               padding: 15px;
             }
-            
+            .container{
+              position: absolute;
+              left: 30%;
+              top: 20%;
+              width: 40%;
+              height: 50%;
+              border: 1px solid;
+              z-index: 1;
+            }
             .navbar-toggle{
               background-color: #deaaff;
               color:black !important;
