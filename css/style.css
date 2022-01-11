@@ -16,6 +16,16 @@
             font-size: 20px;
           }
 
+          .fluffy{
+            color: blue;
+            background:  linear-gradient(to bottom right, purple,  #ffcbf2ff,blue );
+            background-size: cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+          }
+
           .nav.navbar-nav.navbar-right li a:hover, .nav.navbar-nav.navbar-right li a:focus {
             color: purple;
           }
@@ -46,9 +56,9 @@
             left: 35%;
             top: 20%;
             width: 30%;
-            height: 40%;
-            border: 3px solid;
-            border-color: #deaaff;
+            height: 42%;
+            border: 5px solid;
+            border-color: #c27feb;
             opacity: 1;
             z-index: 1;
           }
