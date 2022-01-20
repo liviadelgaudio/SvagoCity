@@ -1,0 +1,11 @@
+.tickets ul{
+    list-style-type: none;
+    font-size: 20px;
+    text-emphasis-style: bold;
+}
+
+.blocco{
+    width: 40%;
+    display: inline-block;
+    display: inline;
+}
