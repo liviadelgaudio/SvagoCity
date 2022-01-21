@@ -11,7 +11,7 @@ class DatabaseHelper{
         }
     }
 
-    public function getTicketsCategories(){
+    public function getTickets(){
         $stmn = $this->db->prepare("SELECT idBiglietto, tipologiaBiglietto
         FROM biglietto");
         $stmn->execute();

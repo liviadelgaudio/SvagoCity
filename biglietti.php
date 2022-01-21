@@ -5,7 +5,7 @@
     //logica
     //nb non devo istanziare dbhelper anche qui perchè l'ho già fetto nel bootstrap
     $templateParams["titolo"] = "SvagoCity - Biglietti";
-    $templateParams["categoria-biglietti"] = $dbh->getTicketsCategories();
+    $templateParams["biglietto"] = $dbh->getTickets();
     $templateParams["nome"] = "acquistobiglietti.php";
 
     //presentazione
