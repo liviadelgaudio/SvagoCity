@@ -45,8 +45,8 @@
                 </button>
                 <div class="dropdown-content">
                   <a href="biglietti.php">Biglietti</a>
-                  <a href="eventi.html">Eventi</a>
-                  <a href="prodotti.html">Prodotti</a>
+                  <a href="eventi.php">Eventi</a>
+                  <a href="prodotti.php">Prodotti</a>
                   <a href="promozioni.html">Promozioni</a>
                 </div>
               </li> 

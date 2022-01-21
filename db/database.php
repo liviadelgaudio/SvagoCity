@@ -49,13 +49,46 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    //getEvents
+    public function getProductsType(){
+        $stmn = $this->db->prepare("SELECT DISTINCT nomeProdotto
+        FROM prodotto");
+        $stmn->execute();
+        $result = $stmn->get_result();
 
-    //getTicketsCategories
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
-    //getTicket
+    public function getProductDescr($nomeProdotto){
+        $stmn = $this->db->prepare("SELECT DISTINCT descrizioneProdotto, prezzoProdotoo, imgProdotto
+        FROM prodotto WHERE nomeProdotto=?");
+        $stmn->bind_param("s", $nomeProdotto);
+        $stmn->execute();
+        $result = $stmn->get_result();
 
-    //getProducts -> forse da gestire anche group by oppure fare get diversi
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }  
+
+    //dato un prodotto, estrae i colori disponibili
+    public function getProductColors($nomeProdotto){
+        $stmn = $this->db->prepare("SELECT DISTINCT coloreProdotto
+        FROM prodotto WHERE nomeProdotto=?");
+        $stmn->bind_param("s", $nomeProdotto);
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    //dato un prodotto in un colore, estrae le taglie disponibili
+    public function getProductSizes($nomeProdotto, $coloreProdotto){
+        $stmn = $this->db->prepare("SELECT tagliaProdotto
+        FROM prodotto WHERE nomeProdotto=? AND coloreProdotto=?");
+        $stmn->bind_param("ss", $nomeProdotto, $coloreProdotto);
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     //getPromos
 
