@@ -44,7 +44,7 @@
                   <em class="fa fa-caret-down"></em>
                 </button>
                 <div class="dropdown-content">
-                  <a href="biglietti.html">Biglietti</a>
+                  <a href="biglietti.php">Biglietti</a>
                   <a href="eventi.html">Eventi</a>
                   <a href="prodotti.html">Prodotti</a>
                   <a href="promozioni.html">Promozioni</a>
