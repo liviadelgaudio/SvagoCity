@@ -90,7 +90,14 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    //getPromos
+    public function getPromos(){
+        $stmn = $this->db->prepare("SELECT nomePromozione, descrizionePromozione
+        FROM promozione");
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     //Registrazione nuovo cliente
     public function insertClient($nomeCliente, $cognomeCliente, $emailCliente, $passwordCliente, $dataNascitaCliente, $indirizzoCliente){

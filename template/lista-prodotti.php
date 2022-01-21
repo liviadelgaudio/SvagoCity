@@ -5,7 +5,7 @@
     $templateParams["prodotto-selezionato"] = $dbh->getProductDescr($prodotto["nomeProdotto"]);
     foreach($templateParams["prodotto-selezionato"] as $prod):
     ?>
-        <div style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px">
+        <div style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px; padding-bottom: 20px">
             <div class="text-center">
                 <h2><?php echo $prodotto["nomeProdotto"]; ?></h2>
             </div>

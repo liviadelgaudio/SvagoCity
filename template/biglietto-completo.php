@@ -10,13 +10,16 @@ $ticket = $templateParams["biglietto-scelto"][0];?>
 <header class="text-center">
     <h2><?php echo "Acquisto biglietto: " . $ticket["tipologiaBiglietto"];?></h2>
 </header>
-<div>
+<div style="padding: 20px 0;">
     <div class="col-12 col-md-6">
-        <label>Prezzo: <?php echo $ticket["prezzoBiglietto"] . "€" ;?></label>
-        <label>Per acquistare il biglietto selezionato, compilare i seguenti campi:</label>
+        <div>
+            <label>Prezzo: <?php echo $ticket["prezzoBiglietto"] . "€" ;?></label>
+        </div>
+        <div>
+            <label>Per acquistare il biglietto selezionato, compilare i seguenti campi:</label>
+        </div>
         <form name="AcquistoBiglietto" METHOD=POST ACTION="acquisto.asp">
             <label>Data:<input type="date" name="day" required/></label>
-            
             <label>Quantità:<input type="number" name="quantity" min="1" max="10" required/></label>
             <input type="submit" value="Aggiungi"/>
         </form>
@@ -26,7 +29,7 @@ $ticket = $templateParams["biglietto-scelto"][0];?>
     </div>
 </div>
 </section>
-<section>
+<section style="padding-bottom: 20px;">
 <p>Nota: in caso di abbonameno si intende la data di inizio validità</p>
 </section>
 <?php endif; ?>
