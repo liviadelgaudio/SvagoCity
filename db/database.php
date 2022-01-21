@@ -29,6 +29,26 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getEvents(){
+        $stmn = $this->db->prepare("SELECT idEvento, nomeEvento, descrizioneEvento, tipologia
+        FROM evento");
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getEventById($idEvento){
+        $stmn = $this->db->prepare("SELECT idEvento, nomeEvento, descrizioneEvento, tipologia, dataEvento, capienzaEvento
+        FROM evento WHERE idEvento=?");
+        $stmn->bind_param("i", $idEvento);
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     //getEvents
 
     //getTicketsCategories

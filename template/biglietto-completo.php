@@ -25,7 +25,6 @@ $ticket = $templateParams["biglietto-scelto"][0];?>
         <p>Si informano i clienti che in fase di acquisto sarà richiesto di inserire i dati dell’intestatario del biglietto, necessari per la verifica dei requisiti di età minima. Al momento dell’ingresso nel parco sarà richiesto un documento d’identità per verificare le informazioni fornite. Qualora si desiderasse cambiare l’intestatario del biglietto, siete pregati di consultare le FAQ riportate <a href="#">qui</a>:</p>
     </div>
 </div>
-</form>
 </section>
 <section>
 <p>Nota: in caso di abbonameno si intende la data di inizio validità</p>
