@@ -4,7 +4,7 @@
     $idBiglietto = $ticket["idBiglietto"];
 ?>
 <h2>
-    <a href="<?php echo "template/acquisto-biglietto.php?id=$idBiglietto";?>"><?php echo $ticket["tipologiaBiglietto"]?></a>
+    <a href="acquisto-biglietto.php?id=<?php echo "$idBiglietto";?>"><?php echo $ticket["tipologiaBiglietto"]?></a>
 </h2>
 <?php endforeach; ?>
 </div>
