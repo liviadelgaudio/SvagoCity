@@ -16,12 +16,17 @@
       <button type="button" class="btn glyphicon glyphicon-remove"></button>
       <header class="h2">Entra nel magico mondo di </header><p class="h2 fluffy" style="display: inline;">Fluffy Candy.</p>
       <div>
-        <form action="#">
+        <form action="#" method="POSt">
+          <?php if(isset($templateParams["errorelogin"])): ?>
+            <p><?php echo $templateParams["errorelogin"]; ?></p>
+            <?php endif; ?>
           <label for="email">Indirizzo mail</label>
           <input type="email" id="email" placeholder="Indirizzo mail" style="display: block;"/>
           <label for="pass">Password</label>
           <input type="password" id="pass" placeholder="Password" style="display: block;"/>
+          <input type="submit" name="submit" value="Invia" />
         </form>
+        <a href="registrazione.php">Vuoi registrarti?</a>
       </div>
     </div>
     <div class="box-container"> 

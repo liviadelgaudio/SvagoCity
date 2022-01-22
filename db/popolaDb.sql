@@ -16,19 +16,19 @@ INSERT INTO `biglietto` (`idBiglietto`, `tipologiaBiglietto`, `prezzoBiglietto`)
 
 
 -- eventi
-INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `capienzaEvento`, `dataEvento`,`tipologia`) VALUES ('1', 'Cenerentola', 'Il racconto della storia di Cenerentola', '100', '2022-07-06','Spettacolo');
+INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`,`prezzo`, `capienzaEvento`, `dataEvento`,`tipologia`) VALUES ('1', 'Cenerentola', 'Il racconto della storia di Cenerentola', '15','100', '2022-07-06','Spettacolo');
 
-INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('2', 'Biancaneve', 'La storia di Biancaneve e i sette nani', '80', '2022-05-11', 'Spettacolo');
+INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`,`capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('2', 'Biancaneve', 'La storia di Biancaneve e i sette nani', '15','80', '2022-05-11', 'Spettacolo');
 
-INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('3', 'Ed Sheeran', 'Concerto del famosissimo cantante britannico', '300', '2022-08-15', 'Concerto');
+INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`,`capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('3', 'Ed Sheeran', 'Concerto del famosissimo cantante britannico', '80', '300', '2022-08-15', 'Concerto');
 
-INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('4', 'Gigi D Alessio', 'Concerto del famosissimo cantante italiano, multi premiato e amato', '500', '2022-01-14', 'Concerto');
+INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`,`capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('4', 'Gigi D Alessio', 'Concerto del famosissimo cantante italiano, multi premiato e amato', '50','500', '2022-01-14', 'Concerto');
 
-INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('5', 'Peppa Pig', 'Spettacolo per i più piccini', '50', '2022-05-22', 'Spettacolo');
+INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`,`capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('5', 'Peppa Pig', 'Spettacolo per i più piccini', '10','50', '2022-05-22', 'Spettacolo');
 
-INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('6', 'Fluffy Candys show', 'Spettacolo della mascotte più bella del mondo', '150', '2022-07-16', 'Spettacolo');
+INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`,`capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('6', 'Fluffy Candys show', 'Spettacolo della mascotte più bella del mondo', '10','150', '2022-07-16', 'Spettacolo');
 
-INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('7', 'LegendaryWebGroup', 'Concerto band emergente', '200', '2023-05-18', 'Concerto');
+INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`,`capienzaEvento`, `dataEvento`, `tipologia`) VALUES ('7', 'LegendaryWebGroup', 'Concerto band emergente', '20','200', '2023-05-18', 'Concerto');
 
 
 -- recensioni
