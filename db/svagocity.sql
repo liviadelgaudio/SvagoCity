@@ -22,6 +22,19 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+--
+-- Struttura della tabella `admin`
+--
+
+CREATE TABLE `admin` (
+  `codiceAdmin` int(100) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `cognome` varchar(100) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(100) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
 -- Struttura della tabella `biglietto`
@@ -63,6 +76,7 @@ CREATE TABLE `evento` (
   `idEvento` int(100) NOT NULL,
   `nomeEvento` varchar(100) NOT NULL,
   `descrizioneEvento` varchar(100) NOT NULL,
+  `prezzo` int(100) NOT NULL,
   `capienzaEvento` int(5) NOT NULL,
   `dataEvento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -78,6 +92,7 @@ CREATE TABLE `ordine` (
   `codiceCliente` int(100) NOT NULL,
   `codiceItem` int(100) NOT NULL,
   `dataOrdine` date NOT NULL,
+  `dataValidità` date NOT NULL,
   `metodoPagamento` varchar(100) NOT NULL,
   `statoOrdine` varchar(100) NOT NULL,
   `spedizione` tinyint(1) NOT NULL
@@ -127,9 +142,39 @@ CREATE TABLE `recensione` (
   `valutazione` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `notificaCliente`
+--
+
+CREATE TABLE `notificaCliente` (
+  `codiceNotifica` int(100) NOT NULL,
+  `codiceCliente` int(100) NOT NULL,
+  `data` date NOT NULL,
+  `descrizione` varchar(10000) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Struttura della tabella `notificaAdmin`
+--
+
+CREATE TABLE `notificaCliente` (
+  `codiceNotificaAdmin` int(100) NOT NULL,
+  `codiceAdmin` int(100) NOT NULL,
+  `data` date NOT NULL,
+  `descrizione` varchar(10000) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 --
 -- Indici per le tabelle scaricate
 --
+--
+-- Indici per le tabelle `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`codiceAdmin`);
 
 --
 -- Indici per le tabelle `biglietto`
@@ -176,8 +221,26 @@ ALTER TABLE `recensione`
   ADD PRIMARY KEY (`idRecensione`);
 
 --
+-- Indici per le tabelle `notificaCliente`
+--
+ALTER TABLE `notificaCliente`
+  ADD PRIMARY KEY (`codiceNotifica`);
+
+--
+-- Indici per le tabelle `notificaAdmin`
+--
+ALTER TABLE `notificaAdmin`
+  ADD PRIMARY KEY (`codiceNotificaAdmin`);
+
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
+--
+-- AUTO_INCREMENT per la tabella `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `codiceAdmin` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `biglietto`
@@ -214,6 +277,17 @@ ALTER TABLE `prodotto`
 --
 ALTER TABLE `promozione`
   MODIFY `idPromozione` int(100) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT per la tabella `notificaCliente`
+--
+ALTER TABLE `notificaCliente`
+  MODIFY `codiceNotifica` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `notificaAdmin`
+--
+ALTER TABLE `notificaAdmin`
+  MODIFY `codiceNotificaAdmin` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `recensione`
