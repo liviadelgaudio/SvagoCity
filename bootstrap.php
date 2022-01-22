@@ -1,7 +1,7 @@
 <?php
 //file condiviso da tutte le pagine, quindi inseriamo risorse accessibili a tutte
 
-    //includere il file per connessione db
+    require_once("utils/functions.php");
     require_once("db/database.php");
 
     //istanziare helper per db
