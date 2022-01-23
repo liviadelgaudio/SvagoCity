@@ -91,6 +91,7 @@ CREATE TABLE `evento` (
   `idEvento` int(100) NOT NULL,
   `nomeEvento` varchar(100) NOT NULL,
   `descrizioneEvento` varchar(100) NOT NULL,
+  `prezzo` int(100) NOT NULL,
   `capienzaEvento` int(5) NOT NULL,
   `dataEvento` date NOT NULL,
   `tipologia` varchar(100) NOT NULL
