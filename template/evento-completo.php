@@ -24,7 +24,7 @@ $evento = $templateParams["evento-scelto"][0];?>
         <label>Per procedere all'acquisto, si prega di selezionare il numero di biglietti:</label>        
         <form name="AcquistoEvento" METHOD=POST ACTION="acquisto.asp">
             <div>
-            <label>Prezzo: <?php echo $evento["capienzaEvento"] . "€"; ?></label>
+            <label>Prezzo: <?php echo $evento["prezzo"] . "€"; ?></label>
             </div>
             <div>
             <label>Quantità:<input type="number" name="quantity" min="1" max="10" required/></label>

@@ -40,7 +40,7 @@ class DatabaseHelper{
     }
 
     public function getEventById($idEvento){
-        $stmn = $this->db->prepare("SELECT idEvento, nomeEvento, descrizioneEvento, tipologia, dataEvento, capienzaEvento
+        $stmn = $this->db->prepare("SELECT idEvento, nomeEvento, descrizioneEvento, tipologia, dataEvento, capienzaEvento, prezzo
         FROM evento WHERE idEvento=?");
         $stmn->bind_param("i", $idEvento);
         $stmn->execute();
