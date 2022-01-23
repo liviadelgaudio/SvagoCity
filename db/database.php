@@ -110,10 +110,10 @@ class DatabaseHelper{
     }
 
     //Controllo Login
-    public function checkLogin($emailCliente, $passwordCliente){
-        $query = "SELECT idCliente, emailCliente, nomeCliente FROM cliente WHERE attivo=1 AND emailCliente = ? AND passwordCliente = ?";
+    public function checkLogin($email, $password){
+        $query = "SELECT idCliente, emailCliente, nomeCliente FROM cliente WHERE emailCliente = ? AND passwordCliente = ?";
         $stmn = $this->db->prepare($query);
-        $stmn->bind_param('ss',$emailCliente, $passwordCliente);
+        $stmn->bind_param('ss',$email, $password);
         $stmn->execute();
         $result = $stmn->get_result();
 

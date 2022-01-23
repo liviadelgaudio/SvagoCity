@@ -16,14 +16,14 @@
       <button type="button" class="btn glyphicon glyphicon-remove"></button>
       <header class="h2">Entra nel magico mondo di </header><p class="h2 fluffy" style="display: inline;">Fluffy Candy.</p>
       <div>
-        <form action="#" method="POSt">
+        <form action="#" method="POST">
           <?php if(isset($templateParams["errorelogin"])): ?>
             <p><?php echo $templateParams["errorelogin"]; ?></p>
             <?php endif; ?>
           <label for="email">Indirizzo mail</label>
-          <input type="email" id="email" placeholder="Indirizzo mail" style="display: block;"/>
+          <input type="email" id="email" name="email" placeholder="Indirizzo mail" style="display: block;"/>
           <label for="pass">Password</label>
-          <input type="password" id="pass" placeholder="Password" style="display: block;"/>
+          <input type="password" id="pass" name="password" placeholder="Password" style="display: block;"/>
           <input type="submit" name="submit" value="Invia" />
         </form>
         <a href="registrazione.php">Vuoi registrarti?</a>
@@ -42,11 +42,10 @@
           </div>
           <div class="collapse navbar-collapse" id="MenuNavBar">
             <ul class="nav navbar-nav">
-              <li><a <?php isActive("home.php");?> href="home.php">Home</a></li>
+              <li class="active"><a href="home.php">Home</a></li>
               <li>
                 <div class="dropdown">
-                <button class="dropbtn" <?php isActive("biglietti.php");?> <?php isActive("eventi.php");?> 
-                <?php isActive("prodotti.php");?> <?php isActive("index.php");?>>Acquista 
+                <button class="dropbtn">Acquista 
                   <em class="fa fa-caret-down"></em>
                 </button>
                 <div class="dropdown-content">
@@ -56,9 +55,9 @@
                   <a href="promozioni.php">Promozioni</a>
                 </div>
               </li> 
-              <li><a <?php isActive("calendario.php");?> href="calendario.php">Calendario</a></li>
-              <li><a <?php isActive("info.php");?> href="info.php">Info</a></li>
-              <li><a <?php isActive("contatti.php");?> href="contatti.php">Contatti</a></li>
+              <li><a href="calendario.php">Calendario</a></li>
+              <li><a href="info.php">Info</a></li>
+              <li><a href="contatti.php">Contatti</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a class="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
