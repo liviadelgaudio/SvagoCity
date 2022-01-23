@@ -37,17 +37,11 @@
             background-color:transparent;
           }
 
-          .nav.navbar-nav > li > a.active{
+          .nav.navbar-nav > li.active > a, .nav.navbar-nav > li.active > div {
             color: black;
             background-color:#c8e7ff;
           }
-
-          .nav.navbar-nav > li > div > button.active{
-            color: black;
-            background-color:#c8e7ff;
-          }
-
-          .nav.navbar-nav li a.active:hover, .nav.navbar-nav > li > a.active:focus{
+          .nav.navbar-nav > li.active > a:hover, .nav.navbar-nav > li.active > a:focus{
             background-color: #c8e7ff;
             color: purple;
           }
