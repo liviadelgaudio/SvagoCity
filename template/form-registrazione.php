@@ -23,3 +23,27 @@
                 <input type="submit" name="submit" value="Invia" class="registrazione"/>
               </form >
           </div>
+
+          <style>
+            div > form > input{
+            margin: 10px 0px;
+            width: 43%;
+            height: 40px;
+            display: block;
+          }
+          
+          #indirizzo{
+            margin-bottom: 20px;
+          }
+
+         div > form > label{
+            margin-left: 15%;
+            width: 30%;
+            
+            display: block;
+          }
+
+         div > form {
+           margin-left: 38%;
+          }
+          </style>
