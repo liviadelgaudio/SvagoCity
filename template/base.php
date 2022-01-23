@@ -26,6 +26,7 @@
           <input type="password" id="pass" name="password" placeholder="Password" style="display: block;"/>
           <input type="submit" name="submit" value="Invia" />
         </form>
+        <a href="registrazione.php">Vuoi registrarti?</a>
       </div>
     </div>
     <div class="box-container"> 
