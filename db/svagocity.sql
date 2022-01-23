@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `nome` varchar(100) NOT NULL,
   `cognome` varchar(100) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
