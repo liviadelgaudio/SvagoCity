@@ -88,24 +88,25 @@
             opacity:1;
           }
 
-          .registrazione{
+          div > div > div > form > input{
             margin: 10px 0px;
             width: 43%;
             height: 40px;
-            display:block;
+            display: block;
           }
           
           #indirizzo{
             margin-bottom: 20px;
           }
 
-          .reglbl{
+          div > div > div > form > label{
             margin-left: 15%;
             width: 30%;
+            
             display: block;
           }
 
-          .reg {
+          div > div > div > form {
            margin-left: 38%;
           }
 
