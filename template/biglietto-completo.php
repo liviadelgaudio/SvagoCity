@@ -1,7 +1,22 @@
-
-
+<?php
+if(isset($_POST['aggiungi'])){
+        //unset($_SESSION["idCarrello"]);
+        if(!isset($_SESSION["idCarrello"])){ //se alla sessione corrente non è ancora stato associato un carrello
+            if(isset($_SESSION['idCliente'])){ //se l'utente è loggato
+                $cartId = $dbh->getCurrentCartId($idCliente); //associo un carrello personale
+            } else{ //altirmenti carrello "generico"
+                $cartId = $dbh->insertCart();
+            }
+            $_SESSION["idCarrello"] = $cartId;
+        } else{ //se invece alla sessione è gia associato un idCarrello, uso quello
+            $cartId = $_SESSION["idCarrello"];
+        }
+        $data = $_POST['data'];
+        //aggiunge al carrello l'elemento selezionato
+        $dbh->addToCart($cartId, $_POST['idProdotto'], $_POST['quantity'], $_POST['tipologia'], $_POST['prezzo'], $data);
+    }
+?>
 <?php if(count($templateParams["biglietto-scelto"])==0): ?>
-
 <article>
     <p>Biglietto non presente</p>
 </article>
@@ -12,25 +27,6 @@ $ticket = $templateParams["biglietto-scelto"][0];?>
 <header class="text-center">
     <h2><?php echo "Acquisto biglietto: " . $ticket["tipologiaBiglietto"];?></h2>
 </header>
-<?php
-
-
-    if(isset($_POST['aggiungi'])){
-        $idCliente = 2;
-        $quantity = $_POST['quantity'];
-         //$_SESSION["idCliente"]; va ricavato da variabili della session
-        if(!isset($_SESSION["idCarrello"])){
-            $cartId = $dbh->getCurrentCartId($idCliente);
-        } else{
-            $cartId = $_SESSION["idCarrello"];
-            echo "id carrello: " . $_SESSION["idCarrello"];
-        }
-        $productId = $ticket["idBiglietto"];
-        //aggiunge al carrello l'elemento selezionato
-        $dbh->addToCart($productId, $cartId, $quantity);
-    }
-
-?>
 <div style="padding: 20px 0;">
     <div class="col-12 col-md-6">
         <div>
@@ -40,6 +36,9 @@ $ticket = $templateParams["biglietto-scelto"][0];?>
             <label>Per acquistare il biglietto selezionato, compilare i seguenti campi:</label>
         </div>
         <form name="AcquistoBiglietto" METHOD=POST>
+            <input type="hidden" name="tipologia" value="biglietto" />
+            <input type="hidden" name="prezzo" value="<?php echo $ticket["prezzoBiglietto"];?>" />
+            <input type="hidden" name="idProdotto" value="<?php echo $ticket["idBiglietto"];?>" />
             <label>Data:<input type="date" name="data" required/></label>
             <label>Quantità:<input type="number" name="quantity" min="1" max="10" required/></label>
             <input type="submit" name="aggiungi" value="Aggiungi"/>

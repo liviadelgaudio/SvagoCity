@@ -269,6 +269,9 @@ CREATE TABLE `prodotto_in_carrello` (
   `idCarrello` int(100) NOT NULL,
   `idProdotto` int(100) NOT NULL,
   `quantità` int(100) NOT NULL,
+  `tipologia` char(100) NOT NULL,
+  `prezzoUnitario` int(100) NOT NULL,
+  `dataUtilizzo` date,
   PRIMARY KEY(id),
   FOREIGN KEY(idCarrello) REFERENCES carrello(idCarrello),
   FOREIGN KEY(idProdotto) REFERENCES prodotto(idProdotto)
