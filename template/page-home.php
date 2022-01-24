@@ -2,14 +2,13 @@
      
      <div class=" text-center">             
        <h1>Benvenuti!</h1>
-       <p>Vieni alla scoperta del parco divertimenti più colorato che ci sia! Ci sono attrazioni per grandi e piccini. Durante la tua visita al parco ci sarà sicuramente qualcuno che ti vorrà conoscere...LA NOSTRA MASCOTTE! Vieni a trovarci, noi e FluffyCandy ti siamo aspettando!</p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
        <hr>
        <h2>Le nostre attrazioni più amate</h2>
-       <p>Le nostre attrazioni più visitate sono sicuramente quelle dedicate a FluffyCandy, vieni a scoprirle.</p>
+       <p>Lorem ipsum...</p>
        <h2>Abbonamenti e salta coda</h2>
-       <p>Puoi acquistare abbonamenti e salta coda direttamente sul nostro sito senza dover fare la fila all'ingresso il giorno della tua visita al parco.</p>
+       <p>Lorem ipsum...</p>
        <h2>Cosa ne pensano i nostri visitatori</h2>
-       <p>Questo è quello che pensano i nostri visitatori..e tu?</p>
        <?php foreach($templateParams["recensione"] as $review):
        $idCliente = $review["codiceCliente"];
        $templateParams["cliente"] = $dbh->getClientById($idCliente);

@@ -3,10 +3,10 @@
         <h2>
             Inserisci dati di pagamento
         </h2>
-        <form action="#">
+        <form action="spedizione.php">
             <input type="radio" class="carta" id="cartaCredito" name="pagamento" value="cartaCredito">
             <label for="cartaCredito">Carta di Credito</label><br>
-            <div class="pcarta" style="border: 3px solid; border-color: #c27feb;">
+            <div class="pcarta" style="border: 3px solid; border-color: #c8e7ff;">
                 <label for="carta"  style="margin: 5px 10%">Numero della carta: </label>
                 <input type="text" id="carta" name="carta" placeholder="Numero della carta" style=" margin: 10px 8% "/><br>
                 <label for="nome" style="margin: 10px 10%">Nome sulla carta: </label>
