@@ -16,7 +16,7 @@
       <button type="button" class="btn glyphicon glyphicon-remove"></button>
       <header class="h2">Entra nel magico mondo di </header><p class="h2 fluffy" style="display: inline;">Fluffy Candy.</p>
       <div>
-        <form action="#" method="POST">
+        <form action="login.php" method="POST">
           <?php if(isset($templateParams["errorelogin"])): ?>
             <p><?php echo $templateParams["errorelogin"]; ?></p>
             <?php endif; ?>

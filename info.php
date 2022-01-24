@@ -1,6 +1,6 @@
 <?php
 
-r   equire_once("bootstrap.php");
+    require_once("bootstrap.php");
 
     $templateParams["nome"] = "page-info.php";
 

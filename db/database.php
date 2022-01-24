@@ -210,7 +210,18 @@ class DatabaseHelper{
             $this->insertProdIntoCart($cartId, $productId, $quantity);
         }
     }
+
+    public function addNotificationFor($idCliente, $date, $descrizione) {
+        $query = "INSERT INTO notificacliente(codiceCliente, `data`, descrizione) VALUES (?, ?, ?)";
+        $stmn = $this->db->prepare($query);
+        $stmn->bind_param('iss', $idCliente, $date, $descrizione);
+        $stmn->execute();
+
+        return $stmn->execute();
+    }
 }
 
-
+//query che per un dato utente deve trovare le notifiche che hanno già trascorso il tempo (data notifica<now)
+//e mi ritorna tutte le notifiche che gli sono arrivate
+//così stampo le notifiche dentro ajax con polling e quando le ho lette devo cancellarle
 ?>

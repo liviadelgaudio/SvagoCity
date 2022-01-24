@@ -30,5 +30,4 @@
         $templateParams["titolo"] = "SvagoCity";
         $templateParams["nome"] = "page-home.php";
     }
-
 ?>
