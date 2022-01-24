@@ -39,34 +39,34 @@
               <span class="icon-bar"></span>                        
             </button>
             <a class="navbar-brand" href="#">SvagoCity</a>
-          </div>
-          <div class="collapse navbar-collapse" id="MenuNavBar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="home.php">Home</a></li>
-              <li>
-                <div class="dropdown">
-                <button class="dropbtn">Acquista 
-                  <em class="fa fa-caret-down"></em>
-                </button>
-                <div class="dropdown-content">
+           </div>
+           <div class="collapse navbar-collapse" id="MenuNavBar">
+             <ul class="nav navbar-nav">
+             <li><a <?php isActive("home.php");?> href="home.php">Home</a></li>
+               <li>
+                 <div class="dropdown">
+                 <button class="dropbtn" <?php isActive("biglietti.php");?> <?php isActive("eventi.php");?> 
+                 <?php isActive("prodotti.php");?> <?php isActive("index.php");?>>Acquista 
+                   <em class="fa fa-caret-down"></em>
+                 </button>
+                 <div class="dropdown-content">
                   <a href="biglietti.php">Biglietti</a>
                   <a href="eventi.php">Eventi</a>
                   <a href="prodotti.php">Prodotti</a>
-                  <a href="promozioni.php">Promozioni</a>
-                </div>
-              </li> 
-              <li><a href="calendario.php">Calendario</a></li>
-              <li><a href="info.php">Info</a></li>
-              <li><a href="contatti.php">Contatti</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a class="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                   <a href="promozioni.php">Promozioni</a>
+                 </div>
+               </li> 
+               <li><a <?php isActive("calendario.php");?> href="calendario.php">Calendario</a></li>
+               <li><a <?php isActive("info.php");?> href="info.php">Info</a></li>
+               <li><a <?php isActive("contatti.php");?> href="contatti.php">Contatti</a></li>
+             </ul>
+             <ul class="nav navbar-nav navbar-right">
+               <li><a class="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               <li><a href="carrello.php"><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</a></li>
             </ul>
           </div>
         </div>
       </nav>
-
       <main>
         <?php require($templateParams["nome"]) ?>
       </main>

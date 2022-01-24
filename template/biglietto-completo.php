@@ -18,32 +18,16 @@ $ticket = $templateParams["biglietto-scelto"][0];?>
     if(isset($_POST['aggiungi'])){
         $idCliente = 2;
         $quantity = $_POST['quantity'];
-        // $_SESSION["idCliente"]; va ricavato da variabili della session
-
-        //$result = $dbh->getCurrentCartId($idCliente);
-        //if($result!=null){
-        //$templateParams["carrello-cliente"] = $dbh->getCurrentCartId($idCliente);
-        $cartId = $dbh->getCurrentCartId($idCliente);
-        //$rowcount=mysqli_num_rows($result);
-        //echo $rowcount;
-        //foreach($templateParams["carrello-cliente"] as $cart):
-        //if($rowcount>0){
-            //$cartId = $templateParams["idCarrello"][0];
-            //$cartId = $cart["idCarrello"];
-            //$cartId = $result[0]['idCarrello'];
-            //echo $cartId;
-        //} else {
-            //echo "ok";
-            //$cartId = $dbh->insertCart($idCliente);
-            //echo $cartId;
-        //}
-
+         //$_SESSION["idCliente"]; va ricavato da variabili della session
+        if(!isset($_SESSION["idCarrello"])){
+            $cartId = $dbh->getCurrentCartId($idCliente);
+        } else{
+            $cartId = $_SESSION["idCarrello"];
+            echo "id carrello: " . $_SESSION["idCarrello"];
+        }
         $productId = $ticket["idBiglietto"];
-        //$_POST['id'];
-
         //aggiunge al carrello l'elemento selezionato
         $dbh->addToCart($productId, $cartId, $quantity);
-        //endforeach;
     }
 
 ?>
