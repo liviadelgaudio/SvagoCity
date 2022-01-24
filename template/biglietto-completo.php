@@ -1,3 +1,5 @@
+
+
 <?php if(count($templateParams["biglietto-scelto"])==0): ?>
 
 <article>
@@ -10,6 +12,41 @@ $ticket = $templateParams["biglietto-scelto"][0];?>
 <header class="text-center">
     <h2><?php echo "Acquisto biglietto: " . $ticket["tipologiaBiglietto"];?></h2>
 </header>
+<?php
+
+
+    if(isset($_POST['aggiungi'])){
+        $idCliente = 2;
+        $quantity = $_POST['quantity'];
+        // $_SESSION["idCliente"]; va ricavato da variabili della session
+
+        //$result = $dbh->getCurrentCartId($idCliente);
+        //if($result!=null){
+        //$templateParams["carrello-cliente"] = $dbh->getCurrentCartId($idCliente);
+        $cartId = $dbh->getCurrentCartId($idCliente);
+        //$rowcount=mysqli_num_rows($result);
+        //echo $rowcount;
+        //foreach($templateParams["carrello-cliente"] as $cart):
+        //if($rowcount>0){
+            //$cartId = $templateParams["idCarrello"][0];
+            //$cartId = $cart["idCarrello"];
+            //$cartId = $result[0]['idCarrello'];
+            //echo $cartId;
+        //} else {
+            //echo "ok";
+            //$cartId = $dbh->insertCart($idCliente);
+            //echo $cartId;
+        //}
+
+        $productId = $ticket["idBiglietto"];
+        //$_POST['id'];
+
+        //aggiunge al carrello l'elemento selezionato
+        $dbh->addToCart($productId, $cartId, $quantity);
+        //endforeach;
+    }
+
+?>
 <div style="padding: 20px 0;">
     <div class="col-12 col-md-6">
         <div>
@@ -18,10 +55,10 @@ $ticket = $templateParams["biglietto-scelto"][0];?>
         <div>
             <label>Per acquistare il biglietto selezionato, compilare i seguenti campi:</label>
         </div>
-        <form name="AcquistoBiglietto" METHOD=POST ACTION="acquisto.asp">
-            <label>Data:<input type="date" name="day" required/></label>
+        <form name="AcquistoBiglietto" METHOD=POST>
+            <label>Data:<input type="date" name="data" required/></label>
             <label>Quantità:<input type="number" name="quantity" min="1" max="10" required/></label>
-            <input type="submit" value="Aggiungi"/>
+            <input type="submit" name="aggiungi" value="Aggiungi"/>
         </form>
     </div>
     <div class="col-12 col-md-6">

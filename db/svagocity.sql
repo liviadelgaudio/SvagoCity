@@ -247,6 +247,34 @@ INSERT INTO `recensione` (`idRecensione`, `codiceCliente`, `testoRecensione`, `v
 (1, 1, 'Che dire, come essere a casa!! Un appuntamento fisso tutti gli anni, per grandi e bambini sempre una conferma.', 5),
 (2, 2, 'Anche questo anno è stato bellissimo, un caloroso saluto alla mascotte Fluffy Candy. Torneremo sicuramente!!!!', 5);
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `carrello`
+--
+
+CREATE TABLE `carrello` (
+  `idCarrello` int(100) NOT NULL AUTO_INCREMENT,
+  `codiceCliente` int(100) NOT NULL,
+  PRIMARY KEY(idCarrello)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `prodotto-in-carrello`
+--
+
+CREATE TABLE `prodotto_in_carrello` (
+  `id` int(100) NOT NULL AUTO_INCREMENT,
+  `idCarrello` int(100) NOT NULL,
+  `idProdotto` int(100) NOT NULL,
+  `quantità` int(100) NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(idCarrello) REFERENCES carrello(idCarrello),
+  FOREIGN KEY(idProdotto) REFERENCES prodotto(idProdotto)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indici per le tabelle scaricate
 --
