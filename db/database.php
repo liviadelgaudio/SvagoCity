@@ -146,7 +146,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     
-    public function getCurrentCartId($idCliente=){
+    public function getCurrentCartId($idCliente){
         $result = $this->db->query("SELECT *
         FROM carrello WHERE codiceCliente = $idCliente");
         $rowcount=mysqli_num_rows($result);
