@@ -25,4 +25,6 @@ $(document).ready(function(){
         $(".box-container").addClass("disattiva");
 
     })
+
+  
 });
