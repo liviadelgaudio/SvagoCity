@@ -21,7 +21,7 @@ class DatabaseHelper{
     }
     
     public function getTicketById($idBiglietto){
-        $stmn = $this->db->prepare("SELECT tipologiaBiglietto, prezzoBiglietto
+        $stmn = $this->db->prepare("SELECT idBiglietto, tipologiaBiglietto, prezzoBiglietto
         FROM biglietto WHERE idBiglietto=?");
         $stmn->bind_param("i", $idBiglietto);
         $stmn->execute();
@@ -144,8 +144,71 @@ class DatabaseHelper{
         $result = $stmn->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }    
+    }
+    
+    public function getCurrentCartId($idCliente){
+        $result = $this->db->query("SELECT *
+        FROM carrello WHERE codiceCliente = $idCliente");
+        $rowcount=mysqli_num_rows($result);
+        if($rowcount>0){
+            $templateParams["carrello-cliente"] = $result->fetch_all(MYSQLI_ASSOC);
+            foreach($templateParams["carrello-cliente"] as $cart):
+                $cartId = $cart['idCarrello'];
+            endforeach;
+        } else{
+            $cartId = $this->insertCart($idCliente);
+        }
+        return $cartId;
+    }
 
+    public function insertCart($idCliente){
+        $query = "INSERT INTO carrello (codiceCliente) VALUES (?)";
+        $stmn = $this->db->prepare($query);
+        $stmn->bind_param('i',$idCliente);
+        $stmn->execute();
+
+        return $stmn->insert_id;
+    }
+
+    public function insertProdIntoCart($idCarrello, $idProdotto, $quantità){
+        $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità) VALUES (?, ?, ?)";
+        $stmn = $this->db->prepare($query);
+        $stmn->bind_param('iii',$idCarrello, $idProdotto, $quantità);
+        $stmn->execute();
+
+        return $stmn->insert_id;
+    }
+
+    public function getProductQuantityInCart($cartId, $productId){
+        $stmt = $this->db->query("SELECT quantità
+        FROM prodotto_in_carrello WHERE idCarrello = ? AND idProdotto = ?");
+        $stmt->bind_param('ii',$idCarrello, $idProdotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    }
+
+    public function addToCart($productId, $cartId, $quantity=1){
+        echo $quantity;
+        $result = $this->db->query("SELECT quantità
+        FROM prodotto_in_carrello WHERE idCarrello = $cartId AND idProdotto = $productId");
+        //$result = $this->getProductQuantityInCart($cartId, $productId);
+        $rowcount = mysqli_num_rows($result);
+        if($rowcount > 0){
+            $templateParams["quantità-prodotto"] = $result->fetch_all(MYSQLI_ASSOC);
+            foreach($templateParams["quantità-prodotto"] as $qp):
+                $quantity += $qp['quantità'] ;
+                echo "quantità aggiornata: " . $quantity;
+            endforeach;
+            echo $quantity;
+            $stmt = "UPDATE prodotto_in_carrello SET quantità =  $quantity
+            WHERE idProdotto = $productId AND idCarrello = $cartId";
+            $stmn = $this->db->query($stmt);
+        } else{
+            $this->insertProdIntoCart($cartId, $productId, $quantity);
+        }
+    }
 }
 
 
