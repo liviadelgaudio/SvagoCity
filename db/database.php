@@ -90,6 +90,26 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getProductId($nomeProdotto, $coloreProdotto, $tagliaProdotto){
+        $stmn = $this->db->prepare("SELECT idProdotto
+        FROM prodotto WHERE nomeProdotto=? AND coloreProdotto=? AND tagliaProdotto=?");
+        $stmn->bind_param("sss", $nomeProdotto, $coloreProdotto, $tagliaProdotto);
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProductById($idProdotto){
+        $stmn = $this->db->prepare("SELECT *
+        FROM prodotto WHERE idProdotto=?");
+        $stmn->bind_param("i", $idProdotto);
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getPromos(){
         $stmn = $this->db->prepare("SELECT nomePromozione, descrizionePromozione
         FROM promozione");
@@ -162,7 +182,7 @@ class DatabaseHelper{
         return $cartId;
     }
 
-    public function insertCart($idCliente){
+    public function insertCart($idCliente=-1){
         $query = "INSERT INTO carrello (codiceCliente) VALUES (?)";
         $stmn = $this->db->prepare($query);
         $stmn->bind_param('i',$idCliente);
@@ -171,30 +191,25 @@ class DatabaseHelper{
         return $stmn->insert_id;
     }
 
-    public function insertProdIntoCart($idCarrello, $idProdotto, $quantità){
-        $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità) VALUES (?, ?, ?)";
-        $stmn = $this->db->prepare($query);
-        $stmn->bind_param('iii',$idCarrello, $idProdotto, $quantità);
+    public function insertProdIntoCart($idCarrello, $idProdotto, $quantità, $tipologia, $prezzo, $data){
+        echo $data;
+        if($data == NULL){
+            $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità, tipologia, prezzoUnitario, dataUtilizzio) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmn = $this->db->prepare($query);
+            $stmn->bind_param('iiisid',$idCarrello, $idProdotto, $quantità, $tipologia, $prezzo, $data);
+        } else{
+            $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità, tipologia, prezzoUnitario, dataUtilizzio) VALUES (?, ?, ?, ?, ?, '$data')";
+            $stmn = $this->db->prepare($query);
+            $stmn->bind_param('iiisi',$idCarrello, $idProdotto, $quantità, $tipologia, $prezzo);
+        }
         $stmn->execute();
 
         return $stmn->insert_id;
     }
 
-    public function getProductQuantityInCart($cartId, $productId){
-        $stmt = $this->db->query("SELECT quantità
-        FROM prodotto_in_carrello WHERE idCarrello = ? AND idProdotto = ?");
-        $stmt->bind_param('ii',$idCarrello, $idProdotto);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result;
-    }
-
-    public function addToCart($productId, $cartId, $quantity=1){
-        echo $quantity;
+    public function addToCart($cartId, $productId, $quantity=1, $tipologia, $prezzo, $data){
         $result = $this->db->query("SELECT quantità
-        FROM prodotto_in_carrello WHERE idCarrello = $cartId AND idProdotto = $productId");
-        //$result = $this->getProductQuantityInCart($cartId, $productId);
+        FROM prodotto_in_carrello WHERE tipologia = '$tipologia' AND idCarrello = $cartId AND idProdotto = $productId");
         $rowcount = mysqli_num_rows($result);
         if($rowcount > 0){
             $templateParams["quantità-prodotto"] = $result->fetch_all(MYSQLI_ASSOC);
@@ -202,14 +217,35 @@ class DatabaseHelper{
                 $quantity += $qp['quantità'] ;
                 echo "quantità aggiornata: " . $quantity;
             endforeach;
-            echo $quantity;
             $stmt = "UPDATE prodotto_in_carrello SET quantità =  $quantity
             WHERE idProdotto = $productId AND idCarrello = $cartId";
             $stmn = $this->db->query($stmt);
         } else{
-            $this->insertProdIntoCart($cartId, $productId, $quantity);
+            $this->insertProdIntoCart($cartId, $productId, $quantity, $tipologia, $prezzo, $data);
         }
     }
+
+    public function getCartItems($cartId){
+        $stmt = $this->db->prepare("SELECT * 
+        FROM prodotto_in_carrello WHERE idCarrello = ?");
+        $stmt->bind_param('i',$cartId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removeItemFromCart($cartId, $productId){
+        $stmt = $this->db->prepare("DELETE * 
+        FROM prodotto_in_carrello WHERE idCarrello = ? AND idProdotto = ?");
+        $stmt->bind_param('ii',$cartId, $productId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    
+    }
+
 
     public function addNotificationFor($idCliente, $date, $descrizione) {
         $query = "INSERT INTO notificacliente(codiceCliente, `data`, descrizione) VALUES (?, ?, ?)";
@@ -221,7 +257,10 @@ class DatabaseHelper{
     }
 }
 
+
 //query che per un dato utente deve trovare le notifiche che hanno già trascorso il tempo (data notifica<now)
 //e mi ritorna tutte le notifiche che gli sono arrivate
 //così stampo le notifiche dentro ajax con polling e quando le ho lette devo cancellarle
 ?>
+
+

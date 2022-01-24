@@ -15,5 +15,9 @@ function registerLoggedUser($user){
     $_SESSION["nomeCliente"] = $user["nomeCliente"];
 }
 
+function removeItem($idCarrello, $idProdotto){
+    $dbh->removeItemFromCart($idCarrello, $idProdotto);
+}
+
 
 ?>
