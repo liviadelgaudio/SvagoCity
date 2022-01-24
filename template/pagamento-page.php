@@ -8,11 +8,11 @@
             <label for="cartaCredito">Carta di Credito</label><br>
             <div class="pcarta" style="border: 3px solid; border-color: #c8e7ff;">
                 <label for="carta"  style="margin: 5px 10%">Numero della carta: </label>
-                <input type="text" id="carta" name="carta" placeholder="Numero della carta" style=" margin: 10px 8% "/><br>
+                <input type="text" id="carta" name="carta" maxlength="16" placeholder="Numero della carta" style=" margin: 10px 8% " required/><br>
                 <label for="nome" style="margin: 10px 10%">Nome sulla carta: </label>
-                <input type="text" id="nome" name="nome" placeholder="Nome sulla carta" style="margin: 10px 10% "/><br>
+                <input type="text" id="nome" name="nome" placeholder="Nome sulla carta" style="margin: 10px 10% " required/><br>
                 <label for="cvv" style="margin: 10px 10%">CVV: </label>
-                <input type="text" id="cvv" name="cvv" placeholder="CVV" style=" margin: 10px 10% 10px 25%"/>
+                <input type="text" id="cvv" name="cvv" placeholder="CVV" maxlength="3"style=" margin: 10px 10% 10px 25%" required/>
             </div>
             <input type="radio" class="altro" id="consegna" name="pagamento" value="contrassegno">
             <label for="consegna">Contrassegno</label><br>
@@ -36,6 +36,7 @@
 
 
 <script>
+
 $(document).ready(function(){
  $(".pcarta").hide();
  $(".pbonifico").hide();
@@ -50,4 +51,7 @@ $(document).ready(function(){
     $(".pbonifico").hide();
  });
 });
+
+
+
 </script>
