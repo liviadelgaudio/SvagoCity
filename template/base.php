@@ -62,7 +62,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a class="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</a></li>
+              <li><a href="carrello.php"><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</a></li>
             </ul>
           </div>
         </div>
@@ -72,7 +72,7 @@
         <?php require($templateParams["nome"]) ?>
       </main>
       
-      <footer class="container-fluid text-center">
+      <footer class="container-fluid text-center col-12 col-md-12">
         <div>
             <div>
                 <p> 

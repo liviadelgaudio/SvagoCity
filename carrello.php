@@ -9,5 +9,4 @@ if(count($result) > 0){
     $cartId = $dbh->insertCart($idCliente);
 }
 
-
 ?>
