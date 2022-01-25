@@ -1,6 +1,6 @@
 
 <div class="text-center">
-    <h1>Benvenuto</h1>
+    <h1>Bentornato</h1>
     <div class="col-12 col-md-8">
         <h2>Ordini</h2>
         <table style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px; padding-bottom: 20px; width:100%;" >
@@ -9,6 +9,13 @@
                 <th id="dataOrdine">Data Ordine</th>
                 <th id="statoOrdine">Stato Ordine</th>
             </tr>
+            <?php foreach($templateParams["ordini"] as $ordine):?>
+                <tr>
+                    <td headers="idOrdine"><?php echo $ordine["idOrdine"];?></td>
+                    <td headers="dataOrdine"><?php echo $ordine["dataOrdine"]; ?></td>
+                    <td headers="statoOrdine"><?php echo $ordine["statoOrdine"]; ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
     <div class="col-12 col-md-4">
