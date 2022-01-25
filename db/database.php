@@ -318,8 +318,8 @@ class DatabaseHelper{
     public function pulisciCarrello($idCarrello){
         $stmt = $this->db->prepare("DELETE 
         FROM prodotto_in_carrello WHERE idCarrello = ?");
-        $stmt->bind_param('i',$itemInCartId);
-        $stmt->execute();
+        $stmt->bind_param('i',$idCarrello);
+        return $stmt->execute();
     }
 
     public function newOrder($codiceCliente, $codiceCarrello, $dataOrdine, $metodoPagamento){
