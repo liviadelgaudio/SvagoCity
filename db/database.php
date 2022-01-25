@@ -263,6 +263,14 @@ class DatabaseHelper{
         $stmn->bind_param('iss', $idAdmin, $date, $descrizione);
         $stmn->execute();
     }
+
+    //metodo load di jQuery
+    public function aggiorna(){
+        $('#contenitore').load('addForCustomer.php');
+    }
+
+    //aggiorno ogni 5 secondi 
+    window.setInterval("aggiorna()", 5000);
 }
 
 
