@@ -1,3 +1,30 @@
+<?php
+//l'utente ha provato a loggarsi
+  if(isset($_POST["email"]) && isset($_POST["password"])){
+
+    $login_result = $dbh->checkLoginClient($_POST["email"], $_POST["password"]);
+    $login_result1 = $dbh->checkLoginAdmin($_POST["email"], $_POST["password"]);
+
+    if(count($login_result)==0 && count($login_result1)==0 ){
+        //Login fallito
+        echo "Errore! Controllare username o password!";
+        //$templateParams["errorelogin"] = "Errore! Controllare username o password!";
+    }
+    else if(count($login_result)!=0){
+        registerLoggedClient($login_result[0]);
+        header("location: login.php");
+    }
+    else{
+        registerLoggedAdmin($login_result1[0]);
+        header("location: loginAdmin.php");
+    }
+}
+
+require_once("bootstrap.php");
+require_once("utils/functions.php");
+
+
+?>
 <!DOCTYPE html>
 <html lang="it">
   <head>
@@ -16,7 +43,7 @@
       <button type="button" class="btn glyphicon glyphicon-remove"></button>
       <header class="h2">Entra nel magico mondo di </header><p class="h2 fluffy" style="display: inline;">Fluffy Candy.</p>
       <div>
-        <form action="login.php" method="POST">
+        <form method="POST">
           <?php if(isset($templateParams["errorelogin"])): ?>
             <p><?php echo $templateParams["errorelogin"]; ?></p>
             <?php endif; ?>
@@ -24,7 +51,7 @@
           <input type="email" id="email" name="email" placeholder="Indirizzo mail" style="display: block;"/>
           <label for="pass">Password</label>
           <input type="password" id="pass" name="password" placeholder="Password" style="display: block;"/>
-          <input type="submit" name="submit" value="Invia" />
+          <input type="submit" name="login" value="Invia" />
         </form>
         <a href="registrazione.php">Vuoi registrarti?</a>
       </div>

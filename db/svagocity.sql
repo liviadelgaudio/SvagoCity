@@ -118,7 +118,7 @@ INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`, `
 --
 
 CREATE TABLE `notificaAdmin` (
-  `codiceNotificaAdmin` int(100) NOT NULL,
+  `codiceNotificaAdmin` int(100) NOT NULL AUTO_INCREMENT,
   `codiceAdmin` int(100) NOT NULL,
   `data` date NOT NULL,
   `descrizione` varchar(10000) NOT NULL
@@ -131,7 +131,7 @@ CREATE TABLE `notificaAdmin` (
 --
 
 CREATE TABLE `notificaCliente` (
-  `codiceNotifica` int(100) NOT NULL,
+  `codiceNotifica` int(100) NOT NULL AUTO_INCREMENT,
   `codiceCliente` int(100) NOT NULL,
   `data` date NOT NULL,
   `descrizione` varchar(10000) NOT NULL
@@ -144,11 +144,12 @@ CREATE TABLE `notificaCliente` (
 --
 
 CREATE TABLE `ordine` (
-  `idOrdine` int(100) NOT NULL,
+  `idOrdine` int(100) NOT NULL AUTO_INCREMENT,
   `codiceCliente` int(100) NOT NULL,
   `codiceItem` int(100) NOT NULL,
   `dataOrdine` date NOT NULL,
   `metodoPagamento` varchar(100) NOT NULL,
+  `dataValidità` date,
   `statoOrdine` varchar(100) NOT NULL,
   `spedizione` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -156,8 +156,8 @@ class DatabaseHelper{
     }
 
     //Controllo Login
-    public function checkLogin($email, $password){
-        $query = "SELECT idCliente, emailCliente, nomeCliente FROM cliente WHERE emailCliente = ? AND passwordCliente = ?";
+    public function checkLoginClient($email, $password){
+        $query = "SELECT idCliente, emailCliente, nomeCliente, cognomeCliente FROM cliente WHERE emailCliente = ? AND passwordCliente = ?";
         $stmn = $this->db->prepare($query);
         $stmn->bind_param('ss',$email, $password);
         $stmn->execute();
@@ -166,6 +166,17 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     
+    public function checkLoginAdmin($email, $password){
+        $query = "SELECT codiceAdmin, email, nome, cognome 
+        FROM admin WHERE email = ? AND password = ?";
+        $stmn = $this->db->prepare($query);
+        $stmn->bind_param('ss',$email, $password);
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getCurrentCartId($idCliente){
         $result = $this->db->query("SELECT *
         FROM carrello WHERE codiceCliente = $idCliente");
@@ -248,7 +259,7 @@ class DatabaseHelper{
 
 
     public function addNotificationFor($idCliente, $date, $descrizione) {
-        $query = "INSERT INTO notificacliente(codiceCliente, `data`, descrizione) VALUES (?, ?, ?)";
+        $query = "INSERT INTO notificaCliente(codiceCliente, `data`, descrizione) VALUES (?, ?, ?)";
         $stmn = $this->db->prepare($query);
         $stmn->bind_param('iss', $idCliente, $date, $descrizione);
         $stmn->execute();
@@ -256,23 +267,43 @@ class DatabaseHelper{
         return $stmn->execute();
     }
 
+    public function getUserNotifications($codiceCliente){
+        $stmt = $this->db->prepare("SELECT * 
+        FROM notificaCliente WHERE codiceCliente = ?");
+        $stmt->bind_param('i',$codiceCliente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 
     public function addNotificationForAdmin($idAdmin, $date, $descrizione){
-        $query = "INSERT INTO notificaadmin(codiceAdmin, `data`, descrizione) VALUES (?, ?, ?)";
+        $query = "INSERT INTO notificaAdmin(codiceAdmin, `data`, descrizione) VALUES (?, ?, ?)";
         $stmn = $this->db->prepare($query);
         $stmn->bind_param('iss', $idAdmin, $date, $descrizione);
         $stmn->execute();
     }
 
-    //metodo load di jQuery
-    public function aggiorna(){
-        $('#contenitore').load('addForCustomer.php');
+    public function getAdminNotifications($codiceAdmin){
+        $stmt = $this->db->prepare("SELECT * 
+        FROM notificaAdmin WHERE codiceAdmin = ?");
+        $stmt->bind_param('i',$codiceAdmin);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    //aggiorno ogni 5 secondi 
-    window.setInterval("aggiorna()", 5000);
+    public function getOrdineById($codiceCliente){
+        $stmt = $this->db->prepare("SELECT idOrdine, dataOrdine, statoOrdine
+        FROM ordine WHERE codiceCliente = ?");
+        $stmt->bind_param('i',$codiceCliente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
-
 
 //query che per un dato utente deve trovare le notifiche che hanno già trascorso il tempo (data notifica<now)
 //e mi ritorna tutte le notifiche che gli sono arrivate

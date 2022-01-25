@@ -14,7 +14,16 @@
     <div class="col-12 col-md-4">
         <h2>Notifiche</h2>
         <div>
-            notifiche scaricate dal db
+        <table style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px; padding-bottom: 20px; width:100%;" >
+            <tr>
+                <th id="descrizioneNotifica">Notifica</th>
+                <th id="dataNotifica">Data</th>
+            </tr>
+            <?php foreach($templateParams["notifiche"] as $notifica):?>
+                    <td headers="descrizioneNotifica"><?php echo $notifica["descrizione"];?></td>
+                    <td headers="dataNotifica"><?php echo $notifica["data"]; ?></td>
+                <?php endforeach; ?>
+        </table>
         </div>
 
     </div>

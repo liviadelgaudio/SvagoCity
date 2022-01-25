@@ -12,7 +12,7 @@
         $login_result = $dbh->checkLoginClient($_POST["email"], $_POST["password"]);
         $login_result1 = $dbh->checkLoginAdmin($_POST["email"], $_POST["password"]);
 
-        if(count($login_result)==0 || count($login_result1)==0 ){
+        if(count($login_result)==0 && count($login_result1)==0 ){
             //Login fallito
             $templateParams["errorelogin"] = "Errore! Controllare username o password!";
         }
