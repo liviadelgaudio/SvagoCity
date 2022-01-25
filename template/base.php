@@ -90,7 +90,7 @@ require_once("utils/functions.php");
              <ul class="nav navbar-nav navbar-right">
              <?php if(isset($_SESSION['idCliente'])){ ?>
                <li><a <?php isActive("login.php");?> href="login.php"><span class="glyphicon glyphicon-user"></span> Area personale</a></li>
-             <?php } else if (isset($_SESSION['idAdmin'])){ ?>
+             <?php } else if (isset($_SESSION['codiceAdmin'])){ ?>
                <li><a <?php isActive("loginAdmin.php");?> href="loginAdmin.php"><span class="glyphicon glyphicon-cog"></span> Gestisci</a></li>
              <?php } else { ?>
                <li><a class="login" href="#"><span class="<?php echo LOGIN?>"></span> <?php echo LOG?></a></li>

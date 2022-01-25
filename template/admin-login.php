@@ -1,3 +1,9 @@
+<?php 
+if(isset($_POST['logout'])){
+    session_destroy();
+    header("location: home.php");
+}
+?>
 
 <div class="text-center">
     <h1>Bentornato</h1>
@@ -34,7 +40,9 @@
             <?php endforeach; ?>
         </table>
         </div>
-
+        <form name="logout" METHOD=POST>
+            <input type="submit" name="logout" value="Esegui il logout"/>
+        </form>
     </div>
 </div>
 
