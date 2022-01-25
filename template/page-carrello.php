@@ -1,3 +1,10 @@
+<?php
+    if(isset($_POST['rimuovi'])){
+        $dbh->removeItemFromCart($_POST['id']);
+        header("location: carrello.php");
+    }
+?>
+
 <h1>Carrello</h1>
 <h2> Riepilogo delle tue scelte:</h2>
 
@@ -22,9 +29,10 @@ foreach($templateParams["articoli"] as $item):
                         <?php echo "Prezzo: " . $item["quantità"] . " x " . $item["prezzoUnitario"] . "€"; ?>
                     </article>
                     <div style="font-size: 11px">
-                    <?php $cartId = $item["idCarrello"];
-                        $productId = $item["idProdotto"]; ?>
-                        <a onclick="removeItem(<?php echo $cartId, $productId;?>)" href="#">Rimuovi</a>
+                        <form name="rimuoviBiglietto" METHOD=POST>
+                            <input type="hidden" name="id" value="<?php echo $item["id"] ; ?>" />
+                            <input type="submit" name="rimuovi" value="Rimuovi"/>
+                        </form>
                     </div>
                 </div>
                 <?php endforeach; 
@@ -43,9 +51,10 @@ foreach($templateParams["articoli"] as $item):
                         <?php echo "Prezzo: " . $item["quantità"] . " x " . $item["prezzoUnitario"] . "€"; ?>
                     </article>
                     <div style="font-size: 11px">
-                    <?php $cartId = $item["idCarrello"];
-                        $productId = $item["idProdotto"]; ?>
-                       <a onclick="removeItem(<?php echo $cartId, $productId;?>)" href="#">Rimuovi</a>
+                        <form name="rimuoviEvento" METHOD=POST>
+                            <input type="hidden" name="id" value="<?php echo $item["id"] ; ?>" />
+                            <input type="submit" name="rimuovi" value="Rimuovi"/>
+                        </form>
                     </div>
                 </div>
                 <?php endforeach; 
@@ -69,9 +78,10 @@ foreach($templateParams["articoli"] as $item):
                         <?php echo "Prezzo: " . $item["quantità"] . " x " . $item["prezzoUnitario"] . "€"; ?>
                     </article>
                     <div style="font-size: 11px">
-                        <?php $cartId = $item["idCarrello"];
-                        $productId = $item["idProdotto"]; ?>
-                        <a onclick="removeItem(<?php echo $cartId, $productId;?>)" href="#">Rimuovi</a>
+                        <form name="rimuoviArticolo" METHOD=POST>
+                            <input type="hidden" name="id" value="<?php echo $item["id"] ; ?>" />
+                            <input type="submit" name="rimuovi" value="Rimuovi"/>
+                        </form>
                     </div>
                 </div>
                 <?php endforeach; 

@@ -245,14 +245,11 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function removeItemFromCart($cartId, $productId){
-        $stmt = $this->db->prepare("DELETE * 
-        FROM prodotto_in_carrello WHERE idCarrello = ? AND idProdotto = ?");
-        $stmt->bind_param('ii',$cartId, $productId);
+    public function removeItemFromCart($itemInCartId){
+        $stmt = $this->db->prepare("DELETE 
+        FROM prodotto_in_carrello WHERE id = ?");
+        $stmt->bind_param('i',$itemInCartId);
         $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
     
     }
 
@@ -298,14 +295,6 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idOrdine, dataOrdine, statoOrdine
         FROM ordine WHERE codiceCliente = ?");
         $stmt->bind_param('i',$codiceCliente);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getOrdine(){
-        $stmt = $this->db->prepare("SELECT idOrdine, dataOrdine, statoOrdine
-        FROM ordine");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
