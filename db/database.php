@@ -149,7 +149,7 @@ class DatabaseHelper{
     public function insertClient($nomeCliente, $cognomeCliente, $emailCliente, $passwordCliente, $dataNascitaCliente, $indirizzoCliente){
         $query = "INSERT INTO cliente (nomeCliente, cognomeCliente, emailCliente, passwordCliente, dataNascitaCliente, indirizzoCliente) VALUES (?, ?, ?, ?, ?, ?)";
         $stmn = $this->db->prepare($query);
-        $stmn->bind_param('ssssds',$nomeCliente, $cognomeCliente, $emailCliente, $passwordCliente, $dataNascitaCliente, $indirizzoCliente);
+        $stmn->bind_param('ssssss',$nomeCliente, $cognomeCliente, $emailCliente, $passwordCliente, $dataNascitaCliente, $indirizzoCliente);
         $stmn->execute();
 
         return $stmn->insert_id;
@@ -320,12 +320,40 @@ class DatabaseHelper{
         FROM prodotto_in_carrello WHERE idCarrello = ?");
         $stmt->bind_param('i',$itemInCartId);
         $stmt->execute();
+
+    public function newOrder($codiceCliente, $codiceCarrello, $dataOrdine, $metodoPagamento){
+        $statoOrdine="in attesa";
+        $stmt = $this->db->prepare("INSERT INTO ordine VALUES (?, ?, '$dataOrdine', ?, ?)");
+        $stmt->bind_param('iiss',$codiceCliente, $codiceCarrello, $metodoPagamento, $statoOrdine);
+        $stmt->execute();
+        
+    }
+
+    public function clientCart($idCarrello, $idCliente){
+        $stmt = $this->db->prepare("UPDATE carrello SET codiceCliente = ? WHERE idCarrello = ?");
+        $stmt->bind_param('ii',$idCliente, $idCarrello);
+        return $stmt->execute();
+      
+
+    }
+
+    public function getCartById($idCliente){
+        $stmt = $this->db->prepare("SELECT idCarrello
+        FROM carrello  WHERE codiceCliente = ? ORDER BY idCarrello DESC LIMIT 1 ");
+        $stmt->bind_param('i',$idCliente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+        
     }
 }
 
 //query che per un dato utente deve trovare le notifiche che hanno già trascorso il tempo (data notifica<now)
 //e mi ritorna tutte le notifiche che gli sono arrivate
 //così stampo le notifiche dentro ajax con polling e quando le ho lette devo cancellarle
+
+
+//prima di procedere la pagamento si deve loggare - update di carrello con id cliente
 ?>
 
 

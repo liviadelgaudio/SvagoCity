@@ -100,7 +100,7 @@ foreach($templateParams["articoli"] as $item):
 </div>
 
 <div style="margin: 8px; padding: 10px 25px 10px; ">
-<form action="pagamento.php">
+<form action="processa-pagamento.php" class="reg" enctype="multipart/form-data">
     <input type="submit" name="submit" value="Vai al pagamento"/>
 </form>
     </div>
