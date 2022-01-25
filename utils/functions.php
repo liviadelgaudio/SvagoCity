@@ -5,19 +5,28 @@ function isActive($pagename){
     }
 }
 
-function isUserLoggedIn(){
+function isUserLoggedInClient(){
     return !empty($_SESSION['idCliente']);
 } 
 
-function registerLoggedUser($user){
+function isUserLoggedInAdmin(){
+    return !empty($_SESSION['codiceAdmin']);
+} 
+
+function registerLoggedClient($user){
     $_SESSION["idCliente"] = $user["idCliente"];
     $_SESSION["emailCliente"] = $user["emailCliente"];
     $_SESSION["nomeCliente"] = $user["nomeCliente"];
 }
 
+function registerLoggedAdmin($user){
+    $_SESSION["codiceAdmin"] = $user["codiceAdmin"];
+    $_SESSION["email"] = $user["email"];
+    $_SESSION["nome"] = $user["nome"];
+}
+
 function removeItem($idCarrello, $idProdotto){
     $dbh->removeItemFromCart($idCarrello, $idProdotto);
 }
-
 
 ?>
