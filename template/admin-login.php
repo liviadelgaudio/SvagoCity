@@ -9,11 +9,6 @@
                 <th id="dataOrdine">Data Ordine</th>
                 <th id="statoOrdine">Stato Ordine</th>
             </tr>
-            <?php foreach($templateParams["ordini"] as $ordine):?>
-                    <td headers="idOrdine"><?php echo $ordine["idOrdine"];?></td>
-                    <td headers="dataOrdine"><?php echo $ordine["dataOrdine"]; ?></td>
-                    <td headers="statoOrdine"><?php echo $ordine["statoOrdine"]; ?></td>
-                <?php endforeach; ?>
         </table>
     </div>
     <div class="col-12 col-md-4">
