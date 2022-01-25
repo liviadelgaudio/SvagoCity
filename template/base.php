@@ -65,7 +65,7 @@ require_once("utils/functions.php");
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" href="#">SvagoCity</a>
+            <img src="./img/logo.PNG" alt="logo" style="width:90px;height:60px;">
            </div>
            <div class="collapse navbar-collapse" id="MenuNavBar">
              <ul class="nav navbar-nav">
