@@ -1,6 +1,6 @@
 
 <div class="text-center">
-    <h1>Benvenuto</h1>
+    <h1>Benvenuto/a <?php echo $_SESSION['nomeCliente'];?> !</h1>
     <div class="col-12 col-md-8">
         <h2>Ordini</h2>
         <table style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px; padding-bottom: 20px; width:100%;" >

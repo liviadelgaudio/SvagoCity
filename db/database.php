@@ -226,7 +226,6 @@ class DatabaseHelper{
             $templateParams["quantità-prodotto"] = $result->fetch_all(MYSQLI_ASSOC);
             foreach($templateParams["quantità-prodotto"] as $qp):
                 $quantity += $qp['quantità'] ;
-                echo "quantità aggiornata: " . $quantity;
             endforeach;
             $stmt = "UPDATE prodotto_in_carrello SET quantità =  $quantity
             WHERE idProdotto = $productId AND idCarrello = $cartId";
