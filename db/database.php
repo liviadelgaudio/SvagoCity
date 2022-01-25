@@ -307,11 +307,40 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function newOrder($codiceCliente, $codiceCarrello, $dataOrdine, $metodoPagamento){
+        $statoOrdine="in attesa";
+        $stmt = $this->db->prepare("INSERT INTO ordine VALUES (?, ?, '$dataOrdine', ?, ?)");
+        $stmt->bind_param('iiss',$codiceCliente, $codiceCarrello, $metodoPagamento, $statoOrdine);
+        $stmt->execute();
+        
+    }
+
+    public function clientCart($idCarrello, $idCliente){
+        $stmt = $this->db->prepare("UPDATE carrello SET codiceCliente = ? WHERE idCarrello = ?");
+        $stmt->bind_param('ii',$idCliente, $idCarrello);
+        return $stmt->execute();
+      
+
+    }
+
+    public function getCartById($idCliente){
+        $stmt = $this->db->prepare("SELECT idCarrello
+        FROM carrello  WHERE codiceCliente = ? ORDER BY idCarrello DESC LIMIT 1 ");
+        $stmt->bind_param('i',$idCliente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+        
+    }
 }
 
 //query che per un dato utente deve trovare le notifiche che hanno già trascorso il tempo (data notifica<now)
 //e mi ritorna tutte le notifiche che gli sono arrivate
 //così stampo le notifiche dentro ajax con polling e quando le ho lette devo cancellarle
+
+
+//prima di procedere la pagamento si deve loggare - update di carrello con id cliente
 ?>
 
 
