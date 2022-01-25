@@ -7,7 +7,7 @@ if(isset($_POST['logout'])){
 
 <div class="text-center">
     <h1>Benvenuto/a <?php echo $_SESSION['nomeCliente'];?> !</h1>
-    <div class="col-12 col-md-8">
+    <div class="text-left col-12 col-md-8">
         <h2>Ordini</h2>
         <table style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px; padding-bottom: 20px; width:100%;" >
             <tr>
@@ -24,7 +24,7 @@ if(isset($_POST['logout'])){
                 <?php endforeach; ?>
         </table>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="text-left col-12 col-md-4">
         <h2>Notifiche</h2>
         <div>
         <table style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px; padding-bottom: 20px; width:100%;" >
@@ -46,17 +46,3 @@ if(isset($_POST['logout'])){
 
     </div>
 </div>
-
-<script src="../jquery-1.11.3.min.js"></script>
-<script type="text/javascript">
-
-    $("button").on("click", () => {
-        $.post(
-            "../notifications/addForCustomer.php",
-            { idCliente: 1 }, //TODO passgli l'id del cliente
-            function(data, status) {
-                alert("Data: " + data);
-            }
-        );
-    });
-</script>

@@ -120,7 +120,7 @@ INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`, `
 CREATE TABLE `notificaAdmin` (
   `codiceNotificaAdmin` int(100) NOT NULL AUTO_INCREMENT,
   `codiceAdmin` int(100) NOT NULL,
-  `data` date NOT NULL,
+  `data` datetime NOT NULL,
   `descrizione` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -133,7 +133,7 @@ CREATE TABLE `notificaAdmin` (
 CREATE TABLE `notificaCliente` (
   `codiceNotifica` int(100) NOT NULL AUTO_INCREMENT,
   `codiceCliente` int(100) NOT NULL,
-  `data` date NOT NULL,
+  `data` datetime NOT NULL,
   `descrizione` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

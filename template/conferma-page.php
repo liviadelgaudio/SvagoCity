@@ -1,3 +1,4 @@
+
 <div>
     <div class="pag col-lg-6 col-md-6 col-12" style="border: 3px solid; border-color: #c27feb; padding: 5px 5px; width: 47%; margin: 10px 10px;">
         <h2>
@@ -5,8 +6,9 @@
         </h2>
        <p>La ringraziamo di aver effettuato l'ordine nel nostro sito.</p>
        <form action="login.php">
-          <input type="submit" value="termina">
+          <input type="submit" name="ordine-effettuato" value="termina">
        </form>
+       <button>Chiudi</button>
     </div>
     <div class="col-lg-6 col-md-6 col-12" style="border: 3px solid; border-color: #c27feb; padding: 5px 5px width: 47%; margin: 10px 5px;">
     <h1>Benvenuti!</h1>
@@ -19,6 +21,21 @@
        <h2>Cosa ne pensano i nostri visitatori</h2>
     </div>
 </div>
+
+<!--gestione notifica ordine andato a buon fine-->
+<script src="./jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+    $("button").on("click", () => {
+        $.post(
+            "./notifications/addForAdmin.php",
+            { idAdmin: 1 , testo: "ordine ricevuto: #"}, //TODO passgli l'id del cliente
+            function(data, status) {
+                alert("ordine effettuato correttamente");
+            }
+        );
+    });
+</script>
 
 
 <script>

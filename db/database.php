@@ -254,7 +254,7 @@ class DatabaseHelper{
     }
 
 
-    public function addNotificationFor($idCliente, $date, $descrizione) {
+    public function addNotificationForClient($idCliente, $date, $descrizione) {
         $query = "INSERT INTO notificaCliente(codiceCliente, `data`, descrizione) VALUES (?, ?, ?)";
         $stmn = $this->db->prepare($query);
         $stmn->bind_param('iss', $idCliente, $date, $descrizione);
@@ -265,7 +265,7 @@ class DatabaseHelper{
 
     public function getUserNotifications($codiceCliente){
         $stmt = $this->db->prepare("SELECT * 
-        FROM notificaCliente WHERE codiceCliente = ?");
+        FROM notificaCliente WHERE codiceCliente = ? ORDER BY data DESC LIMIT 10");
         $stmt->bind_param('i',$codiceCliente);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -274,7 +274,7 @@ class DatabaseHelper{
     }
 
 
-    public function addNotificationForAdmin($idAdmin, $date, $descrizione){
+    public function addNotificationForAdmin($idAdmin=1, $date, $descrizione){
         $query = "INSERT INTO notificaAdmin(codiceAdmin, `data`, descrizione) VALUES (?, ?, ?)";
         $stmn = $this->db->prepare($query);
         $stmn->bind_param('iss', $idAdmin, $date, $descrizione);
@@ -283,7 +283,7 @@ class DatabaseHelper{
 
     public function getAdminNotifications($codiceAdmin){
         $stmt = $this->db->prepare("SELECT * 
-        FROM notificaAdmin WHERE codiceAdmin = ?");
+        FROM notificaAdmin WHERE codiceAdmin = ? ORDER BY data DESC");
         $stmt->bind_param('i',$codiceAdmin);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -301,11 +301,25 @@ class DatabaseHelper{
     }
 
     public function getOrdine(){
-        $stmt = $this->db->prepare("SELECT idOrdine, dataOrdine, statoOrdine
+        $stmt = $this->db->prepare("SELECT idOrdine, codiceCliente, dataOrdine, statoOrdine
         FROM ordine");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function updateOrderStatus($stato, $idOrdine){
+        $stmt = $this->db->prepare("UPDATE ordine SET statoOrdine = ?
+            WHERE idOrdine = ?");
+        $stmt->bind_param('si', $stato, $idOrdine);
+        return $stmt->execute();
+    }
+
+    public function pulisciCarrello($idCarrello){
+        $stmt = $this->db->prepare("DELETE 
+        FROM prodotto_in_carrello WHERE idCarrello = ?");
+        $stmt->bind_param('i',$itemInCartId);
+        $stmt->execute();
     }
 }
 
