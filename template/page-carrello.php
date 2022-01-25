@@ -17,7 +17,7 @@ foreach($templateParams["articoli"] as $item):
                     </h3>
                     <article>
                         <div>
-                            Data utilizzo: <?php echo $item["dataUtilizzio"];?>
+                            Data utilizzo: <?php echo $item["dataUtilizzo"];?>
                         </div>
                         <?php echo "Prezzo: " . $item["quantità"] . " x " . $item["prezzoUnitario"] . "€"; ?>
                     </article>

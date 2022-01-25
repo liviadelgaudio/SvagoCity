@@ -194,11 +194,11 @@ class DatabaseHelper{
     public function insertProdIntoCart($idCarrello, $idProdotto, $quantità, $tipologia, $prezzo, $data){
         echo $data;
         if($data == NULL){
-            $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità, tipologia, prezzoUnitario, dataUtilizzio) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità, tipologia, prezzoUnitario, dataUtilizzo) VALUES (?, ?, ?, ?, ?, ?)";
             $stmn = $this->db->prepare($query);
             $stmn->bind_param('iiisid',$idCarrello, $idProdotto, $quantità, $tipologia, $prezzo, $data);
         } else{
-            $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità, tipologia, prezzoUnitario, dataUtilizzio) VALUES (?, ?, ?, ?, ?, '$data')";
+            $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità, tipologia, prezzoUnitario, dataUtilizzo) VALUES (?, ?, ?, ?, ?, '$data')";
             $stmn = $this->db->prepare($query);
             $stmn->bind_param('iiisi',$idCarrello, $idProdotto, $quantità, $tipologia, $prezzo);
         }

@@ -1,11 +1,14 @@
 <?php
 if(isset($_POST['aggiungi'])){
         //unset($_SESSION["idCarrello"]);
+        echo $_SESSION["idCarrello"];
         if(!isset($_SESSION["idCarrello"])){ //se alla sessione corrente non è ancora stato associato un carrello
             if(isset($_SESSION['idCliente'])){ //se l'utente è loggato
-                $cartId = $dbh->getCurrentCartId($idCliente); //associo un carrello personale
+                $cartId = $dbh->getCurrentCartId($_SESSION['idCliente']); //associo un carrello personale
+                echo "cliente loggato";
             } else{ //altirmenti carrello "generico"
                 $cartId = $dbh->insertCart();
+                echo "inserisco carrello";
             }
             $_SESSION["idCarrello"] = $cartId;
         } else{ //se invece alla sessione è gia associato un idCarrello, uso quello
@@ -13,6 +16,7 @@ if(isset($_POST['aggiungi'])){
         }
         $data = $_POST['data'];
         //aggiunge al carrello l'elemento selezionato
+        echo "aggiungo articolo";
         $dbh->addToCart($cartId, $_POST['idProdotto'], $_POST['quantity'], $_POST['tipologia'], $_POST['prezzo'], $data);
     }
 ?>
