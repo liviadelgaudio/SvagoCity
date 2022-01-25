@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    define("LOGIN", "glyphicon glyphicon-log-in");
+    define("LOG", "Login");
 //file condiviso da tutte le pagine, quindi inseriamo risorse accessibili a tutte
 
     //includere il file per connessione db
