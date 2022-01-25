@@ -38,7 +38,7 @@ if(isset($_POST['logout'])){
         $datum->add(new DateInterval("PT60S"));
         $startTime = $datum->format('Y-m-d H:i:s');
         $dbh->addNotificationForClient($_POST["idCliente"], $startTime, $testo);
-        $dbh->updateOrderStatus($stato ,1); //mettere id ordine
+        $dbh->updateOrderStatus($stato, $_POST["idOrdine"]); //mettere id ordine
         header("location: loginAdmin.php");
 }
 ?>

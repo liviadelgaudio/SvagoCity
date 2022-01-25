@@ -4,7 +4,7 @@
         <h2>
             Inserisci dati di pagamento
         </h2>
-        <form action="conferma.php">
+        <form action="processa-ordine.php">
             <input type="radio" class="carta" id="cartaCredito" name="pagamento" value="cartaCredito">
             <label for="cartaCredito">Carta di Credito</label><br>
             <div class="pcarta" style="border: 3px solid; border-color: #c8e7ff;">

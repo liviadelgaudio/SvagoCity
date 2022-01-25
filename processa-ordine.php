@@ -3,11 +3,10 @@
     //Inserisco
 
     $codiceCliente = $_SESSION["idCliente"];
-    $codiceCarrello = $dbh->getCartbyId($codiceCliente);
+    $codiceCarrello = $_SESSION["idCarrello"];
     $data = htmlspecialchars(date("Y-m-d"));
     $pagamento = $_SESSION["pagamento"];
-    $dbh->newOrder(2, 2, $data , $pagamento);
-    header("location: login.php");
+    $_SESSION['idOrdine'] = $dbh->newOrder($codiceCliente, $codiceCarrello, $data , $pagamento);
+    header("location: conferma.php");
 ?>
-
 

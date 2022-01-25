@@ -5,10 +5,9 @@
             Inserisci dati di spedizione
         </h2>
        <p>La ringraziamo di aver effettuato l'ordine nel nostro sito.</p>
-       <form action="processa-ordine.php" method="POST" class="reg" enctype="multipart/form-data">
-          <input type="submit" name="termina" value="Termina">
+       <form action="login.php" method="POST" class="reg" enctype="multipart/form-data">
+          <input class="termina" type="submit" name="termina" value="Termina">
        </form>
-       <button>Chiudi</button>
     </div>
     <div class="col-lg-6 col-md-6 col-12" style="border: 3px solid; border-color: #c27feb; padding: 5px 5px width: 47%; margin: 10px 5px;">
     <?php $totale = 0;
@@ -89,10 +88,10 @@ foreach($templateParams["articoli"] as $item):
 <script src="./jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 
-    $("button").on("click", () => {
+    $(".termina").on("click", () => {
         $.post(
             "./notifications/addForAdmin.php",
-            { idAdmin: 1 , testo: "ordine ricevuto: #"}, //TODO passgli l'id del cliente
+            { idAdmin: -1 , testo: "ordine ricevuto: #<?php echo $_SESSION['idOrdine']; ?>"},
             function(data, status) {
                 alert("ordine effettuato correttamente");
             }

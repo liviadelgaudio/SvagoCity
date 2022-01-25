@@ -3,7 +3,7 @@ if(isset($_POST['aggiungi'])){
         //unset($_SESSION["idCarrello"]);
         if(!isset($_SESSION["idCarrello"])){ //se alla sessione corrente non è ancora stato associato un carrello
             if(isset($_SESSION['idCliente'])){ //se l'utente è loggato
-                $cartId = $dbh->getCurrentCartId($idCliente); //associo un carrello personale
+                $cartId = $dbh->getCurrentCartId($_SESSION["idCliente"]); //associo un carrello personale
             } else{ //altirmenti carrello "generico"
                 $cartId = $dbh->insertCart();
             }

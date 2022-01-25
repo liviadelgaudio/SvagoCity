@@ -264,8 +264,8 @@ class DatabaseHelper{
     }
 
     public function getUserNotifications($codiceCliente){
-        $stmt = $this->db->prepare("SELECT * 
-        FROM notificaCliente WHERE codiceCliente = ? ORDER BY data DESC LIMIT 10");
+        $stmt = $this->db->prepare("SELECT DISTINCT * 
+        FROM notificaCliente WHERE codiceCliente = ? GROUP BY data ORDER BY data DESC LIMIT 10");
         $stmt->bind_param('i',$codiceCliente);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -283,7 +283,7 @@ class DatabaseHelper{
 
     public function getAdminNotifications($codiceAdmin){
         $stmt = $this->db->prepare("SELECT * 
-        FROM notificaAdmin WHERE codiceAdmin = ? ORDER BY data DESC");
+        FROM notificaAdmin WHERE codiceAdmin = ? OR codiceAdmin = -1 ORDER BY data DESC");
         $stmt->bind_param('i',$codiceAdmin);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -320,13 +320,15 @@ class DatabaseHelper{
         FROM prodotto_in_carrello WHERE idCarrello = ?");
         $stmt->bind_param('i',$itemInCartId);
         $stmt->execute();
+    }
 
     public function newOrder($codiceCliente, $codiceCarrello, $dataOrdine, $metodoPagamento){
         $statoOrdine="in attesa";
-        $stmt = $this->db->prepare("INSERT INTO ordine VALUES (?, ?, '$dataOrdine', ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO ordine(codiceCliente, codiceCarrello, dataOrdine, metodoPagamento, statoOrdine) VALUES (?, ?, '$dataOrdine', ?, ?)");
         $stmt->bind_param('iiss',$codiceCliente, $codiceCarrello, $metodoPagamento, $statoOrdine);
         $stmt->execute();
-        
+
+        return $stmt->insert_id;
     }
 
     public function clientCart($idCarrello, $idCliente){
