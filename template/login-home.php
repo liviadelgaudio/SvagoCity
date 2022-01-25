@@ -1,10 +1,9 @@
 
 <div class="text-center">
-<h1>Benvenuto</h1>
+<h1>Grazie per esserti iscritto, benvenuto!</h1>
 <div>
     <h2>
-       ciao
-       <button>Utente acquista</button>
+       <button>Ricevi notifica riepilogo ordine</button>
     </h2>
     
 </div>

@@ -255,6 +255,14 @@ class DatabaseHelper{
 
         return $stmn->execute();
     }
+
+
+    public function addNotificationForAdmin($idAdmin, $date, $descrizione){
+        $query = "INSERT INTO notificaadmin(codiceAdmin, `data`, descrizione) VALUES (?, ?, ?)";
+        $stmn = $this->db->prepare($query);
+        $stmn->bind_param('iss', $idAdmin, $date, $descrizione);
+        $stmn->execute();
+    }
 }
 
 
