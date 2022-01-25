@@ -1,10 +1,11 @@
 <?php
-require_once("bootstrap.php");
+ require_once("bootstrap.php");
 
-$templateParams["notifiche"] = $dbh->getAdminNotifications(1);
-//$templateParams["notifiche"] = $dbh->getAdminNotifications($_SESSION['idCliente']);
-$templateParams["nome"] = "admin-login.php";
+ $templateParams["nome"] = "admin-login.php";
+ $templateParams["notifiche"] = $dbh->getAdminNotifications(1);
+ //$templateParams["notifiche"] = $dbh->getAdminNotifications($_SESSION['idCliente']);
+ $templateParams["ordini"] = $dbh->getOrdine();
 
-require('template/base.php');
+ require('template/base.php');
 
-?>
+ ?>

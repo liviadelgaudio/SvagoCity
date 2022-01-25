@@ -10,9 +10,11 @@
                 <th id="statoOrdine">Stato Ordine</th>
             </tr>
             <?php foreach($templateParams["ordini"] as $ordine):?>
+                <tr>
                     <td headers="idOrdine"><?php echo $ordine["idOrdine"];?></td>
                     <td headers="dataOrdine"><?php echo $ordine["dataOrdine"]; ?></td>
                     <td headers="statoOrdine"><?php echo $ordine["statoOrdine"]; ?></td>
+                </tr>
                 <?php endforeach; ?>
         </table>
     </div>
@@ -25,9 +27,11 @@
                 <th id="dataNotifica">Data</th>
             </tr>
             <?php foreach($templateParams["notifiche"] as $notifica):?>
+            <tr>
                     <td headers="descrizioneNotifica"><?php echo $notifica["descrizione"];?></td>
                     <td headers="dataNotifica"><?php echo $notifica["data"]; ?></td>
                 <?php endforeach; ?>
+            </tr>
         </table>
         </div>
 

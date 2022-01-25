@@ -299,6 +299,14 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getOrdine(){
+        $stmt = $this->db->prepare("SELECT idOrdine, dataOrdine, statoOrdine
+        FROM ordine");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 //query che per un dato utente deve trovare le notifiche che hanno già trascorso il tempo (data notifica<now)
