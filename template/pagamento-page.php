@@ -3,7 +3,7 @@
         <h2>
             Inserisci dati di pagamento
         </h2>
-        <form action="spedizione.php">
+        <form action="conferma.php">
             <input type="radio" class="carta" id="cartaCredito" name="pagamento" value="cartaCredito">
             <label for="cartaCredito">Carta di Credito</label><br>
             <div class="pcarta" style="border: 3px solid; border-color: #c8e7ff;">
@@ -19,7 +19,8 @@
             <input type="radio" class="bonifico" id="bonifico" name="pagamento" value="bonifico">
             <label for="bonifico">Bonifico Bancario</label><br>
             <p class="pbonifico">IBAN: IT 89 H 379992784721937</p>
-            <input type="submit" name="submit" value="Vai alla Spedizione">
+            <input type="submit" name="submit" value="Conferma Ordine">
+            <p>La spedizione verrà effetuata al nostro punto di ritiro in Via dell'Università, 50 Cesena (FC).</p>
         </form>
     </div>
     <div class="col-lg-6 col-md-6 col-12" style="border: 3px solid; border-color: #c27feb; padding: 5px 5px width: 47%; margin: 10px 5px;">

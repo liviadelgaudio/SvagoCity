@@ -3,14 +3,10 @@
         <h2>
             Inserisci dati di spedizione
         </h2>
-        <form action="#">
-            <input type="radio" class="email" id="email" name="email" value="email">
-            <label for="email">Via e-mail</label><br>
-            <input type="radio" class="ritiro" id="ritiro" name="ritiro" value="ritiro">
-            <label for="ritiro">Punto di ritiro</label><br>
-            <p class="pritiro">Via dell'Università, 50 Cesena (FC)</p>
-            <input type="submit" name="submit" value="Conferma ordine">
-        </form>
+       <p>La ringraziamo di aver effettuato l'ordine nel nostro sito.</p>
+       <form action="login.php">
+          <input type="submit" value="termina">
+       </form>
     </div>
     <div class="col-lg-6 col-md-6 col-12" style="border: 3px solid; border-color: #c27feb; padding: 5px 5px width: 47%; margin: 10px 5px;">
     <h1>Benvenuti!</h1>
