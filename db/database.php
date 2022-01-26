@@ -12,7 +12,7 @@ class DatabaseHelper{
     }
 
     public function getTickets(){
-        $stmn = $this->db->prepare("SELECT idBiglietto, tipologiaBiglietto
+        $stmn = $this->db->prepare("SELECT idBiglietto, tipologiaBiglietto, prezzoBiglietto
         FROM biglietto");
         $stmn->execute();
         $result = $stmn->get_result();
@@ -28,6 +28,13 @@ class DatabaseHelper{
         $result = $stmn->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function updateTicketPrice($idBiglietto, $prezzoBiglietto){
+        $stmt = $this->db->prepare("UPDATE biglietto SET prezzoBiglietto = ?
+        WHERE idBiglietto = ?");
+        $stmt->bind_param('ii', $idBiglietto, $prezzoBiglietto);
+        return $stmt->execute();
     }
 
     public function getEvents(){
@@ -47,6 +54,13 @@ class DatabaseHelper{
         $result = $stmn->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removeEvent($idEvento){
+        $stmt = $this->db->prepare("DELETE 
+        FROM evento WHERE idEvento = ?");
+        $stmt->bind_param('i',$idEvento);
+        return $stmt->execute();
     }
 
     public function getProductsType(){

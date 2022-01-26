@@ -8,7 +8,7 @@
     if(count($login_result)==0 && count($login_result1)==0 ){
         //Login fallito
         echo "Errore! Controllare username o password!";
-        //$templateParams["errorelogin"] = "Errore! Controllare username o password!";
+        $templateParams["errorelogin"] = "Errore! Controllare username o password!";
     }
     else if(count($login_result)!=0){
         registerLoggedClient($login_result[0]);
@@ -73,7 +73,12 @@ require_once("utils/functions.php");
                <li>
                  <div class="dropdown">
                  <button class="dropbtn" <?php isActive("biglietti.php");?> <?php isActive("eventi.php");?> 
-                 <?php isActive("prodotti.php");?> <?php isActive("index.php");?>>Acquista 
+                 <?php isActive("prodotti.php");?> <?php isActive("index.php");?>>
+                 <?php if(isset($_SESSION["codiceAdmin"])){
+                   echo "Listino"; 
+                 } else {
+                   echo "Acquista";
+                 } ?> 
                    <em class="fa fa-caret-down"></em>
                  </button>
                  <div class="dropdown-content">
