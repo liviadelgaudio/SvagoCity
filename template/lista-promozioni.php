@@ -11,4 +11,11 @@
     </article>
 </div>
 <?php endforeach; ?>
+
+<?php if(isset($_SESSION['codiceAdmin'])){ ?>
+
+<form action="add-promo.php" method="POST" class="reg" enctype="multipart/form-data">
+   <input type="submit" name="aggiungi" value="Aggiungi promo"/>
+</form>
+<?php }; ?>
 </div>
