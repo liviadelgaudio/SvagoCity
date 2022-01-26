@@ -376,6 +376,22 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
         
     }
+
+    public function newEvent($nome, $descrizione, $prezzo, $capienza, $data, $tipologia){
+        $stmt = $this->db->prepare("INSERT INTO evento(nomeEvento, descrizioneEvento, prezzo, capienzaEvento, dataEvento, tipologia) VALUES (?, ?, ?, ?, '$data', ?)");
+        $stmt->bind_param('ssiis',$nome, $descrizione, $prezzo, $capienza, $tipologia);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
+
+    public function newPromo($nome, $descrizione, $sconto, $codice){
+        $stmt = $this->db->prepare("INSERT INTO promozione(nomePromozione, descrizionePromozione, sconto, codicePromo) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param('ssis',$nome, $descrizione, $sconto, $codice);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
 }
 
 //query che per un dato utente deve trovare le notifiche che hanno già trascorso il tempo (data notifica<now)

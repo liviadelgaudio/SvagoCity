@@ -29,4 +29,11 @@
     </article>
 </div>
 <?php endforeach; ?>
+
+<?php if(isset($_SESSION['codiceAdmin'])){ ?>
+
+<form action="add-evento.php" method="POST" class="reg" enctype="multipart/form-data">
+   <input type="submit" name="aggiungi" value="Aggiungi evento"/>
+</form>
+<?php }; ?>
 </div>
