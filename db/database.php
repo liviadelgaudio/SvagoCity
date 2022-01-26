@@ -401,6 +401,14 @@ class DatabaseHelper{
 
         return $stmt->insert_id;
     }
+
+    public function newRecensione($codiceCliente, $testo, $valutazione){
+        $stmt = $this->db->prepare("INSERT INTO recensione(codiceCliente, testoRecensione, valutazione) VALUES (?, ?, ?)");
+        $stmt->bind_param('isi',$codiceCliente, $testo, $valutazione);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
 }
 
 //query che per un dato utente deve trovare le notifiche che hanno già trascorso il tempo (data notifica<now)

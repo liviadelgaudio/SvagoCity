@@ -24,4 +24,10 @@
         </div>
         <?php endforeach; ?>
      </div>
+
+<?php if(isset($_SESSION['idCliente'])){ ?>
+<form action="add-recensione.php" method="POST" class="reg" enctype="multipart/form-data">
+   <input type="submit" name="aggiungi" value="Scrivi recensione"/>
+</form>
+<?php }; ?>
  </div>
