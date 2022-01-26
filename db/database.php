@@ -203,7 +203,6 @@ class DatabaseHelper{
     }
 
     public function insertProdIntoCart($idCarrello, $idProdotto, $quantità, $tipologia, $prezzo, $data){
-        echo $data;
         if($data == NULL){
             $query = "INSERT INTO prodotto_in_carrello (idCarrello, idProdotto, quantità, tipologia, prezzoUnitario, dataUtilizzo) VALUES (?, ?, ?, ?, ?, ?)";
             $stmn = $this->db->prepare($query);
