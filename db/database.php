@@ -63,6 +63,15 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
+    public function getProducts(){
+        $stmn = $this->db->prepare("SELECT *
+        FROM prodotto");
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getProductsType(){
         $stmn = $this->db->prepare("SELECT DISTINCT nomeProdotto
         FROM prodotto");
@@ -73,7 +82,7 @@ class DatabaseHelper{
     }
 
     public function getProductDescr($nomeProdotto){
-        $stmn = $this->db->prepare("SELECT DISTINCT descrizioneProdotto, prezzoProdotoo, imgProdotto, disponibilitaProdotto
+        $stmn = $this->db->prepare("SELECT DISTINCT descrizioneProdotto, prezzoProdotoo, imgProdotto
         FROM prodotto WHERE nomeProdotto=?");
         $stmn->bind_param("s", $nomeProdotto);
         $stmn->execute();

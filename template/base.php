@@ -99,8 +99,8 @@ require_once("utils/functions.php");
                <li><a <?php isActive("loginAdmin.php");?> href="loginAdmin.php"><span class="glyphicon glyphicon-cog"></span> Gestisci</a></li>
              <?php } else { ?>
                <li><a class="login" href="#"><span class="<?php echo LOGIN?>"></span> <?php echo LOG?></a></li>
+               <li><a <?php isActive("carrello.php");?> href="carrello.php"><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</a></li>
              <?php } ?> 
-              <li><a <?php isActive("carrello.php");?> href="carrello.php"><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</a></li>
             </ul>
           </div>
         </div>

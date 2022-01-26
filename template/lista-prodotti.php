@@ -1,34 +1,23 @@
 <?php
-if(!isset($_SESSION['codiceAdmin'])){
-    if(isset($_POST['aggiungi'])){
-            //unset($_SESSION["idCarrello"]);
-            if(!isset($_SESSION["idCarrello"])){ //se alla sessione corrente non è ancora stato associato un carrello
-                if(isset($_SESSION['idCliente'])){ //se l'utente è loggato
-                    $cartId = $dbh->getCurrentCartId($_SESSION["idCliente"]); //associo un carrello personale
-                } else{ //altirmenti carrello "generico"
-                    $cartId = $dbh->insertCart();
-                }
-                $_SESSION["idCarrello"] = $cartId;
-            } else{ //se invece alla sessione è gia associato un idCarrello, uso quello
-                $cartId = $_SESSION["idCarrello"];
+if(isset($_POST['aggiungi'])){
+        //unset($_SESSION["idCarrello"]);
+        if(!isset($_SESSION["idCarrello"])){ //se alla sessione corrente non è ancora stato associato un carrello
+            if(isset($_SESSION['idCliente'])){ //se l'utente è loggato
+                $cartId = $dbh->getCurrentCartId($_SESSION["idCliente"]); //associo un carrello personale
+            } else{ //altirmenti carrello "generico"
+                $cartId = $dbh->insertCart();
             }
-            //necessario ricavare l'id del prodotto scelto sulla base di nome, colore e taglia
-            $templateParams["prodotto-aggiunto"] = $dbh->getProductId($_POST['nomeProdotto'], $_POST['colore'], $_POST['taglia']);
-            foreach($templateParams["prodotto-aggiunto"] as $productId):
-                //aggiunge al carrello l'elemento selezionato
-                $dbh->addToCart($cartId, $productId["idProdotto"], $_POST['quantity'], $_POST['tipologia'], $_POST['prezzo'], NULL);
-            endforeach;
-    }
-} else {
-    if(isset($_POST['aggiungi'])){
-        $templateParams["prodotto-scelto"] = $dbh->getProductId($_POST['nomeProdotto'], $_POST['colore'], $_POST['taglia']);
-        foreach($templateParams["prodotto-scelto"] as $product):
-        $quantity = $_POST['quantity'] + $product["disponibilitaProdotto"];
-        $dbh->updateProductQuantity($product["idProdotto"], $quantity);
+            $_SESSION["idCarrello"] = $cartId;
+        } else{ //se invece alla sessione è gia associato un idCarrello, uso quello
+            $cartId = $_SESSION["idCarrello"];
+        }
+        //necessario ricavare l'id del prodotto scelto sulla base di nome, colore e taglia
+        $templateParams["prodotto-aggiunto"] = $dbh->getProductId($_POST['nomeProdotto'], $_POST['colore'], $_POST['taglia']);
+        foreach($templateParams["prodotto-aggiunto"] as $productId):
+            //aggiunge al carrello l'elemento selezionato
+            $dbh->addToCart($cartId, $productId["idProdotto"], $_POST['quantity'], $_POST['tipologia'], $_POST['prezzo'], NULL);
         endforeach;
-        header("location: prodotti.php");
     }
-}    
 ?>
 
 <div class="text-center">
@@ -65,11 +54,6 @@ if(!isset($_SESSION['codiceAdmin'])){
                             ?>
                         </select>
                     </label>
-                    <?php if(isset($_SESSION["codiceAdmin"])){ ?>
-                    <div>
-                    <label>Disponibilità in magazzino: <?php echo $prod["disponibilitaProdotto"] ; ?></label>
-                    </div>
-                    <?php } ?>
                     <label>Quantità:<input type="number" name="quantity" min="1" max="5" required/></label>
                     <input type="submit" name="aggiungi" value="Aggiungi"/>
                 </form>
