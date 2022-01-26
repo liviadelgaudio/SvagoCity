@@ -36,6 +36,11 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+--
+-- Dump dei dati per la tabella `admin`
+--
+INSERT INTO `admin` (`codiceAdmin`, `nome`, `cognome`, `email`, `password`) VALUES
+ (1, 'Gino', 'Pino', 'ginopino@svagocity.com', 'gigino15');
 
 --
 -- Struttura della tabella `biglietto`
@@ -79,9 +84,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idCliente`, `nomeCliente`, `cognomeCliente`, `emailCliente`, `passwordCliente`, `dataNascitaCliente`, `indirizzoCliente`) VALUES
-(1, 'Silvia', 'Mirri', 'silvia.mirri@gmail.com', 'sissi2020', '1992-02-29', 'via Cesare Pavese, 50 Cesena FC');
+(1, 'Silvia', 'Mirri', 'silvia.mirri@svagocity.com', 'silvia2020', '1992-02-29', 'via Cesare Pavese, 50 Cesena FC');
 INSERT INTO `cliente` (`idCliente`, `nomeCliente`, `cognomeCliente`, `emailCliente`, `passwordCliente`, `dataNascitaCliente`, `indirizzoCliente`) VALUES
- (2, 'Giovanni', 'Delnevo', 'g.delnevo@gmail.com', 'gigino15', '1989-11-08', 'via delle Moline, 40 Bologna BO');
+ (2, 'Giovanni', 'Delnevo', 'g.delnevo@svagocity.com', 'giovanni2020', '1989-11-08', 'via delle Moline, 40 Bologna BO');
 -- --------------------------------------------------------
 
 --
@@ -118,7 +123,7 @@ INSERT INTO `evento` (`idEvento`, `nomeEvento`, `descrizioneEvento`, `prezzo`, `
 --
 
 CREATE TABLE `notificaAdmin` (
-  `codiceNotificaAdmin` int(100) NOT NULL AUTO_INCREMENT,
+  `codiceNotificaAdmin` int(100) NOT NULL,
   `codiceAdmin` int(100) NOT NULL,
   `data` datetime NOT NULL,
   `descrizione` varchar(10000) NOT NULL
@@ -131,7 +136,7 @@ CREATE TABLE `notificaAdmin` (
 --
 
 CREATE TABLE `notificaCliente` (
-  `codiceNotifica` int(100) NOT NULL AUTO_INCREMENT,
+  `codiceNotifica` int(100) NOT NULL,
   `codiceCliente` int(100) NOT NULL,
   `data` datetime NOT NULL,
   `descrizione` varchar(10000) NOT NULL
@@ -144,14 +149,12 @@ CREATE TABLE `notificaCliente` (
 --
 
 CREATE TABLE `ordine` (
-  `idOrdine` int(100) NOT NULL AUTO_INCREMENT,
+  `idOrdine` int(100) NOT NULL,
   `codiceCliente` int(100) NOT NULL,
-  `codiceItem` int(100) NOT NULL,
+  `codiceCarrello` int(100) NOT NULL,
   `dataOrdine` date NOT NULL,
   `metodoPagamento` varchar(100) NOT NULL,
-  `dataValidità` date,
-  `statoOrdine` varchar(100) NOT NULL,
-  `spedizione` tinyint(1) NOT NULL
+  `statoOrdine` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -266,16 +269,13 @@ CREATE TABLE `carrello` (
 --
 
 CREATE TABLE `prodotto_in_carrello` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+  `id` int(100) NOT NULL,
   `idCarrello` int(100) NOT NULL,
   `idProdotto` int(100) NOT NULL,
   `quantità` int(100) NOT NULL,
   `tipologia` char(100) NOT NULL,
   `prezzoUnitario` int(100) NOT NULL,
-  `dataUtilizzo` date,
-  PRIMARY KEY(id),
-  FOREIGN KEY(idCarrello) REFERENCES carrello(idCarrello),
-  FOREIGN KEY(idProdotto) REFERENCES prodotto(idProdotto)
+  `dataUtilizzo` date
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -323,7 +323,7 @@ ALTER TABLE `notificaCliente`
 -- Indici per le tabelle `ordine`
 --
 ALTER TABLE `ordine`
-  ADD PRIMARY KEY (`idOrdine`,`codiceCliente`,`codiceItem`) USING BTREE;
+  ADD PRIMARY KEY (`idOrdine`);
 
 --
 -- Indici per le tabelle `prodotto`
@@ -343,6 +343,14 @@ ALTER TABLE `promozione`
 --
 ALTER TABLE `recensione`
   ADD PRIMARY KEY (`idRecensione`);
+
+  
+--
+-- Indici per le tabelle `prodotto-in-carrello`
+--
+ALTER TABLE `prodotto_in_carrello`  
+  ADD PRIMARY KEY(`id`);
+
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -389,6 +397,12 @@ ALTER TABLE `notificaCliente`
 --
 ALTER TABLE `ordine`
   MODIFY `idOrdine` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `prodotto-in-carrello`
+--
+ALTER TABLE `prodotto_in_carrello`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `prodotto`
