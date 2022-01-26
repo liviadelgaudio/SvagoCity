@@ -1,8 +1,7 @@
 <?php
     if(isset($_POST['modifica'])){
-        echo $_POST['id'] . $_POST['prezzo'];
-        //$dbh->updateTicketPrice($_POST['id'], $_POST['prezzo']);
-        //header("location: biglietti.php");
+        $dbh->updateTicketPrice($_POST['id'], $_POST['prezzo']);
+        header("location: biglietti.php");
     }
 ?>
 
@@ -21,8 +20,8 @@
 <?php } else{ ?>
     <div class="text-center">
         <h1>Tipologie di biglietti presenti:</h1>
-        <div style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px">
             <?php foreach($templateParams["biglietto"] as $ticket): ?>
+            <div style="border: 3px solid; border-color: #c27feb; margin: 8px; margin-bottom:20px">
                 <h2>
                     <?php echo $ticket["tipologiaBiglietto"]?>
                 </h2>

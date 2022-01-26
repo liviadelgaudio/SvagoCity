@@ -33,7 +33,7 @@ class DatabaseHelper{
     public function updateTicketPrice($idBiglietto, $prezzoBiglietto){
         $stmt = $this->db->prepare("UPDATE biglietto SET prezzoBiglietto = ?
         WHERE idBiglietto = ?");
-        $stmt->bind_param('ii', $idBiglietto, $prezzoBiglietto);
+        $stmt->bind_param('ii', $prezzoBiglietto, $idBiglietto);
         return $stmt->execute();
     }
 
@@ -73,7 +73,7 @@ class DatabaseHelper{
     }
 
     public function getProductDescr($nomeProdotto){
-        $stmn = $this->db->prepare("SELECT DISTINCT descrizioneProdotto, prezzoProdotoo, imgProdotto
+        $stmn = $this->db->prepare("SELECT DISTINCT descrizioneProdotto, prezzoProdotoo, imgProdotto, disponibilitaProdotto
         FROM prodotto WHERE nomeProdotto=?");
         $stmn->bind_param("s", $nomeProdotto);
         $stmn->execute();
@@ -105,7 +105,7 @@ class DatabaseHelper{
     }
 
     public function getProductId($nomeProdotto, $coloreProdotto, $tagliaProdotto){
-        $stmn = $this->db->prepare("SELECT idProdotto
+        $stmn = $this->db->prepare("SELECT idProdotto, disponibilitaProdotto
         FROM prodotto WHERE nomeProdotto=? AND coloreProdotto=? AND tagliaProdotto=?");
         $stmn->bind_param("sss", $nomeProdotto, $coloreProdotto, $tagliaProdotto);
         $stmn->execute();
@@ -124,13 +124,27 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function updateProductQuantity($productId, $quantity){
+        $stmt = $this->db->prepare("UPDATE prodotto SET disponibilitaProdotto = ?
+        WHERE idProdotto = ?");
+        $stmt->bind_param('ii', $quantity, $productId);
+        return $stmt->execute();
+    }
+
     public function getPromos(){
-        $stmn = $this->db->prepare("SELECT nomePromozione, descrizionePromozione
+        $stmn = $this->db->prepare("SELECT idPromozione, nomePromozione, descrizionePromozione
         FROM promozione");
         $stmn->execute();
         $result = $stmn->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removePromo($idPromozione){
+        $stmt = $this->db->prepare("DELETE 
+        FROM promozione WHERE idPromozione = ?");
+        $stmt->bind_param('i',$idPromozione);
+        return $stmt->execute();
     }
 
     public function getReviews($n=-1){
