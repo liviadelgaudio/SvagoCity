@@ -12,7 +12,7 @@ class DatabaseHelper{
     }
 
     public function getTickets(){
-        $stmn = $this->db->prepare("SELECT idBiglietto, tipologiaBiglietto
+        $stmn = $this->db->prepare("SELECT idBiglietto, tipologiaBiglietto, prezzoBiglietto
         FROM biglietto");
         $stmn->execute();
         $result = $stmn->get_result();
@@ -30,6 +30,13 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function updateTicketPrice($idBiglietto, $prezzoBiglietto){
+        $stmt = $this->db->prepare("UPDATE biglietto SET prezzoBiglietto = ?
+        WHERE idBiglietto = ?");
+        $stmt->bind_param('ii', $prezzoBiglietto, $idBiglietto);
+        return $stmt->execute();
+    }
+
     public function getEvents(){
         $stmn = $this->db->prepare("SELECT idEvento, nomeEvento, descrizioneEvento, tipologia
         FROM evento");
@@ -43,6 +50,22 @@ class DatabaseHelper{
         $stmn = $this->db->prepare("SELECT idEvento, nomeEvento, descrizioneEvento, tipologia, dataEvento, capienzaEvento, prezzo
         FROM evento WHERE idEvento=?");
         $stmn->bind_param("i", $idEvento);
+        $stmn->execute();
+        $result = $stmn->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removeEvent($idEvento){
+        $stmt = $this->db->prepare("DELETE 
+        FROM evento WHERE idEvento = ?");
+        $stmt->bind_param('i',$idEvento);
+        return $stmt->execute();
+    }
+
+    public function getProducts(){
+        $stmn = $this->db->prepare("SELECT *
+        FROM prodotto");
         $stmn->execute();
         $result = $stmn->get_result();
 
@@ -91,7 +114,7 @@ class DatabaseHelper{
     }
 
     public function getProductId($nomeProdotto, $coloreProdotto, $tagliaProdotto){
-        $stmn = $this->db->prepare("SELECT idProdotto
+        $stmn = $this->db->prepare("SELECT idProdotto, disponibilitaProdotto
         FROM prodotto WHERE nomeProdotto=? AND coloreProdotto=? AND tagliaProdotto=?");
         $stmn->bind_param("sss", $nomeProdotto, $coloreProdotto, $tagliaProdotto);
         $stmn->execute();
@@ -110,13 +133,27 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function updateProductQuantity($productId, $quantity){
+        $stmt = $this->db->prepare("UPDATE prodotto SET disponibilitaProdotto = ?
+        WHERE idProdotto = ?");
+        $stmt->bind_param('ii', $quantity, $productId);
+        return $stmt->execute();
+    }
+
     public function getPromos(){
-        $stmn = $this->db->prepare("SELECT nomePromozione, descrizionePromozione
+        $stmn = $this->db->prepare("SELECT idPromozione, nomePromozione, descrizionePromozione
         FROM promozione");
         $stmn->execute();
         $result = $stmn->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removePromo($idPromozione){
+        $stmt = $this->db->prepare("DELETE 
+        FROM promozione WHERE idPromozione = ?");
+        $stmt->bind_param('i',$idPromozione);
+        return $stmt->execute();
     }
 
     public function getReviews($n=-1){
@@ -346,6 +383,30 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
         
+    }
+
+    public function newEvent($nome, $descrizione, $prezzo, $capienza, $data, $tipologia){
+        $stmt = $this->db->prepare("INSERT INTO evento(nomeEvento, descrizioneEvento, prezzo, capienzaEvento, dataEvento, tipologia) VALUES (?, ?, ?, ?, '$data', ?)");
+        $stmt->bind_param('ssiis',$nome, $descrizione, $prezzo, $capienza, $tipologia);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
+
+    public function newPromo($nome, $descrizione, $sconto, $codice){
+        $stmt = $this->db->prepare("INSERT INTO promozione(nomePromozione, descrizionePromozione, sconto, codicePromo) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param('ssis',$nome, $descrizione, $sconto, $codice);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
+
+    public function newRecensione($codiceCliente, $testo, $valutazione){
+        $stmt = $this->db->prepare("INSERT INTO recensione(codiceCliente, testoRecensione, valutazione) VALUES (?, ?, ?)");
+        $stmt->bind_param('isi',$codiceCliente, $testo, $valutazione);
+        $stmt->execute();
+
+        return $stmt->insert_id;
     }
 }
 

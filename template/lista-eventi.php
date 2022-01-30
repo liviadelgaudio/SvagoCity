@@ -1,3 +1,10 @@
+<?php
+    if(isset($_POST['rimuovi'])){
+        $dbh->removeEvent($_POST['id']);
+        header("location: eventi.php");
+    }
+?>
+
 <div class="text-center">
 <h1>Prossimi eventi:</h1>
 <?php foreach($templateParams["evento"] as $evento):
@@ -9,8 +16,24 @@
     </h2>
     <article>
         <?php echo $evento["descrizioneEvento"]; ?>
-        <button><a href="acquisto-evento.php?id=<?php echo "$idEvento";?>">Scopri di più</a></button>
+         <?php if(isset($_SESSION["codiceAdmin"])){ ?>
+            <form name="rimuoviEvento" METHOD=POST>
+                <input type="hidden" name="id" value="<?php echo $evento["idEvento"] ; ?>" />
+                <input type="submit" name="rimuovi" value="Rimuovi"/>
+            </form>
+        <?php
+        } else{ ?>
+            <button><a href="acquisto-evento.php?id=<?php echo $idEvento;?>">Scopri di più</a></button> ;
+        <?php
+        } ?>
     </article>
 </div>
 <?php endforeach; ?>
+
+<?php if(isset($_SESSION['codiceAdmin'])){ ?>
+
+<form action="add-evento.php" method="POST" class="reg" enctype="multipart/form-data">
+   <input type="submit" name="aggiungi" value="Aggiungi evento"/>
+</form>
+<?php }; ?>
 </div>

@@ -73,6 +73,46 @@
             font-weight:bold;
             text-align:center;
           }
+
+          @media screen and (max-width: 767px) {
+
+          div > form > input{
+          margin: 10px 0px;
+          width: 70%;
+          height: 40px;
+          display: block;
+          }
+
+          div > form > label{
+          margin-left: 25%;
+          width: 30%;
+
+          display: block;
+          }
+
+          div > form {
+          margin-left: 22%;
+          }
+
+          #ProgressBar {
+          width: 100%%;
+          background-color: #ddd;
+          max-width:274px;
+          }
+          #bar {
+          width: 1%;
+          height: 10px;
+          background-color: #4CAF50;
+          max-width:274px;
+          }
+
+          #password {
+          margin: 10px 0px;
+          width: 70%;
+          height: 40px;
+          display
+          }
+          }
         </style>
 
 <script>

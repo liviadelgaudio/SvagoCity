@@ -8,7 +8,7 @@
     if(count($login_result)==0 && count($login_result1)==0 ){
         //Login fallito
         echo "Errore! Controllare username o password!";
-        //$templateParams["errorelogin"] = "Errore! Controllare username o password!";
+        $templateParams["errorelogin"] = "Errore! Controllare username o password!";
     }
     else if(count($login_result)!=0){
         registerLoggedClient($login_result[0]);
@@ -73,7 +73,12 @@ require_once("utils/functions.php");
                <li>
                  <div class="dropdown">
                  <button class="dropbtn" <?php isActive("biglietti.php");?> <?php isActive("eventi.php");?> 
-                 <?php isActive("prodotti.php");?> <?php isActive("index.php");?>>Acquista 
+                 <?php isActive("prodotti.php");?> <?php isActive("index.php");?>>
+                 <?php if(isset($_SESSION["codiceAdmin"])){
+                   echo "Listino"; 
+                 } else {
+                   echo "Acquista";
+                 } ?> 
                    <em class="fa fa-caret-down"></em>
                  </button>
                  <div class="dropdown-content">
@@ -94,8 +99,8 @@ require_once("utils/functions.php");
                <li><a <?php isActive("loginAdmin.php");?> href="loginAdmin.php"><span class="glyphicon glyphicon-cog"></span> Gestisci</a></li>
              <?php } else { ?>
                <li><a class="login" href="#"><span class="<?php echo LOGIN?>"></span> <?php echo LOG?></a></li>
+               <li><a <?php isActive("carrello.php");?> href="carrello.php"><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</a></li>
              <?php } ?> 
-              <li><a <?php isActive("carrello.php");?> href="carrello.php"><span class="glyphicon glyphicon-shopping-cart"></span> Carrello</a></li>
             </ul>
           </div>
         </div>
